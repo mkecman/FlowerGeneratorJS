@@ -39,3 +39,9 @@ var _logm = function()
     }
 	console.log( output );
 }
+
+var getRandomInt = function(min, max) 
+{
+  if ( min < 0 ) min = 0;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}

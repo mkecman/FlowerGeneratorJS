@@ -44,7 +44,7 @@
         <label id="sliderRotationLabel"></label>
         <div style="padding-top: 10px;">
             <label>Background:</label><input id="backgroundColorPicker" class="color" value="rgb(79, 87, 95)" /></br>
-            <label>Line:</label><input id="lineColorPicker" class="color" value="rgb(255, 255, 255, 255)" />
+            <label>Line:</label><input id="lineColorPicker" class="color" value="rgb(0, 128, 255)" />
         </div>
         <canvas id="element-canvas"></canvas>
     </div>

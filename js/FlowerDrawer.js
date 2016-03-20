@@ -27,11 +27,15 @@ FlowerDrawer.prototype.prepareModels = function( startX, startY, distance, sides
 		var x = round( distance * Math.cos( angle ) + startX );
 		var y = round( distance * Math.sin( angle ) + startY );
 
+		tempObject = { x: x, y: y, color: this.colors[ waves % this.colors.length-1 ] };
+		//tempObject = { x: x, y: y, color: tinycolor.random() };
+		elementsInStep.push( tempObject );
+
+		x = Math.floor( x / 10 );
+		y = Math.floor( y / 10 );
+
 		if( this.elementsDict[ x ] == undefined )
 			this.elementsDict[ x ] = [];
-
-		tempObject = { x: x, y: y, color: this.colors[ waves ] };
-		elementsInStep.push( tempObject );
 		
 		if( this.elementsDict[ x ][ y ] == undefined )
 		{
