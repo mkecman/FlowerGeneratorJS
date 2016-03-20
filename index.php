@@ -23,7 +23,6 @@
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
         <script src="js/jqueryphp/jquery.php.js" type="text/javascript"></script>
         <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-        <script type="text/javascript" src="js/colors.js"></script>
         <script type="text/javascript" src="js/jqColorPicker.min.js"></script>
         
     </head>
@@ -32,38 +31,22 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-<!--
-        <div class="header-container">
-            <header class="wrapper clearfix">
-                <h1 class="title">Nutrients</h1>
-                <nav>
-                    <ul>
-                        <li><a href="index.html">Game</a></li>
-                        <li><a href="nutrients.html">Nutrients</a></li>
-                        <li><a href="#">Shop</a></li>
-                    </ul>
-                </nav>
-            </header>
+    <div id="main-canvas">
+        <canvas id="flower-canvas"></canvas>
+    </div>
+    <div id="toolbar">
+        <label onclick="toggleToolbar();">TOOLBAR</label><br/>
+        <label id="sliderSizeLabel"></label>
+        <label id="sliderDistanceLabel"></label>
+        <label id="sliderSidesLabel"></label>
+        <label id="sliderWavesLabel"></label>
+        <label id="sliderRotationLabel"></label>
+        <div style="padding-top: 10px;">
+            <label>Background:</label><input id="backgroundColorPicker" class="color" value="rgb(79, 87, 95)" /></br>
+            <label>Line:</label><input id="lineColorPicker" class="color" value="rgb(223, 147, 31)" />
         </div>
-        -->
-
-        <div class="main-container">
-            <div class="main wrapper clearfix">
-                <div id="toolbar">
-                    <label id="sliderSizeLabel"></label>
-                    <label id="sliderDistanceLabel"></label>
-                    <label id="sliderSidesLabel"></label>
-                    <label id="sliderWavesLabel"></label>
-                    <input id="backgroundColorPicker" class="color" value="rgb(142, 165, 186)" />
-                    <input id="lineColorPicker" class="color" value="rgb(53, 63, 72)" />
-                </div>
-                <div id="main-canvas">
-                    <canvas id="flower-canvas"></canvas>
-                </div>
-            </div> <!-- #main -->
-        </div> <!-- #main-container -->
-
-
+    </div>
+            
 <?php
 $version = file_get_contents( "version" );
 

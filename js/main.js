@@ -1,26 +1,55 @@
 window.onload = function()
 {
 	flower = new FlowerDrawer( document.getElementById("flower-canvas") );
-	flower.setCTXSize( 1, 1 );
-
-var options = {
-		renderCallback: function($elm, toggled) {
-
-			$('#main-canvas').css( "backgroundColor", $elm[0].style.backgroundColor );
-
-		}
-	};
-	$('.color').colorPicker( options ); // that's it
-	//drawFlower();
+	flower.maximizeCanvas();
+	setupColorPickers();
+	drawFlower();
 };
 
 function drawFlower() 
 {
-	var model = new ElementModel( flower.width / 2, flower.height / 2, flowerModel.size, false );
+	var model = new ElementModel( flower.width / 2, flower.height / 2, flowerModel.size, false, lineColor );
 	var element = new ElementCircle( flower.ctx, model );
 	var rectangle = new ElementRectangle( flower.ctx, model );
 	flower.clear();
-	flower.draw( element, flowerModel.distance, flowerModel.sides, 0, flowerModel.waves );
+	flower.draw( element, flowerModel.distance, flowerModel.sides, flowerModel.rotation, flowerModel.waves );
+}
+
+var toolbarActive = true;
+function toggleToolbar() 
+{
+	if( toolbarActive )
+	{
+		$("#toolbar").css( { "width": 70, "height": 15 } );
+		toolbarActive = false;
+	}
+	else
+	{
+		$("#toolbar").css( { "width": 250, "height": "auto" } );
+		toolbarActive = true;
+	}
+}
+
+var lineColor = "";
+function setupColorPickers() 
+{
+	var options = 
+	{ 	renderCallback: function($elm, toggled) 
+		{ 
+			if( $elm[0] === $('#backgroundColorPicker')[0] )
+				$('#main-canvas').css( "backgroundColor", $elm[0].style.backgroundColor ); 
+
+			if( $elm[0] === $('#lineColorPicker')[0] )
+			{
+				lineColor = $elm[0].style.backgroundColor;
+				drawFlower();
+			}
+		} 
+	};
+	$('.color').colorPicker( options );
+
+	$('#main-canvas').css( "backgroundColor", $('#backgroundColorPicker')[0].value );
+	lineColor = $('#lineColorPicker')[0].value;
 }
 
 $(function() 
@@ -88,6 +117,23 @@ $(function()
       }
     });
     sliderWavesLabel.text( "Waves: " + 3 );
+
+    var sliderRotationLabel = $( "#sliderRotationLabel" );
+    var slider = $( "<div id='slider'></div>" ).insertAfter( sliderRotationLabel ).slider(
+    {
+      min: 0,
+      max: Math.PI,
+      step: 0.02,
+      range: "min",
+      value: 0,
+      slide: function( event, ui ) 
+      {
+        flowerModel.rotation = ui.value;
+        sliderRotationLabel.text( "Rotation: " + ui.value );
+        drawFlower();
+      }
+    });
+    sliderRotationLabel.text( "Rotation: " + 0 );
 
 });
        

@@ -10,5 +10,6 @@ var flowerModel =
 	size: 50,
 	distance: 50,
 	sides: 3,
-	waves: 3
+	waves: 3,
+	rotation: 0
 }

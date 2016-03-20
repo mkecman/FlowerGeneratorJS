@@ -1,6 +1,7 @@
 var FlowerDrawer = function( canvas )
 {
 	this.ctx = canvas.getContext("2d");
+	this.lineColor = 0;
 }
 
 FlowerDrawer.prototype.draw = function( element, distance, sides, startingAngle, waves ) 
@@ -29,11 +30,11 @@ FlowerDrawer.prototype.clear = function()
 	this.ctx.clearRect( 0, 0, this.width, this.height );
 };
 
-FlowerDrawer.prototype.setCTXSize = function( widthScale, heightScale ) 
+FlowerDrawer.prototype.maximizeCanvas = function() 
 {
-	this.width = $( "#flower-canvas" ).width();
-	this.height = $( "#flower-canvas" ).height();
-	
+	this.width = window.innerWidth;
+	this.height = window.innerHeight;
+
 	this.ctx.width  = this.width;
 	this.ctx.height = this.height;
 	this.ctx.canvas.width  = this.width;

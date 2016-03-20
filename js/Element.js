@@ -7,6 +7,7 @@ var Element = function( ctx, model )
 Element.prototype.draw = function() 
 {
 	this.ctx.beginPath();
+	this.ctx.strokeStyle = this.model.color;
 	this.drawShape();
 	if( this.model.fill )
 		this.ctx.fill();
@@ -16,7 +17,7 @@ Element.prototype.draw = function()
 
 Element.prototype.drawShape = function() 
 {
-	//this.ctx.arc( this.model.x, this.model.y, this.model.radius, 0, 2*Math.PI );
+	//implement your own
 };
 
 Element.prototype.clone = function( x, y ) 
