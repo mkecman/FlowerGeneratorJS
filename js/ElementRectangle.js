@@ -1,13 +1,12 @@
-var ElementRectangle = function( ctx, model )
+var ElementRectangle = function( model )
 {
-	this.ctx = ctx;
-	this.model = model;
+	this.setup( model );
 }
 
 inheritsFrom(ElementRectangle, Element);
 
 ElementRectangle.prototype.drawShape = function() 
 {
-	var ofset = this.model.radius / 2;
-	this.ctx.strokeRect( this.model.x - ofset, this.model.y - ofset, this.model.radius, this.model.radius );
+	var ofset = this.model.size / 2;
+	this.ctx.strokeRect( ofset, ofset, this.model.size, this.model.size );
 };

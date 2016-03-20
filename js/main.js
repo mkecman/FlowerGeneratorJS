@@ -9,10 +9,14 @@ window.onload = function()
 function drawFlower() 
 {
 	var model = new ElementModel( flower.width / 2, flower.height / 2, flowerModel.size, false, lineColor );
-	var element = new ElementCircle( flower.ctx, model );
-	var rectangle = new ElementRectangle( flower.ctx, model );
+	var element = new ElementCircle( model );
+	//var element = new Element( model );
+	var rectangle = new ElementRectangle( model );
+
+	flower.prepareDrawing( flower.width / 2, flower.height / 2, flowerModel.distance, flowerModel.sides, flowerModel.rotation, flowerModel.waves, lineColor );
+
 	flower.clear();
-	flower.draw( element, flowerModel.distance, flowerModel.sides, flowerModel.rotation, flowerModel.waves );
+	flower.draw( element );
 }
 
 var toolbarActive = true;
@@ -41,7 +45,7 @@ function setupColorPickers()
 
 			if( $elm[0] === $('#lineColorPicker')[0] )
 			{
-				lineColor = $elm[0].style.backgroundColor;
+				lineColor = $elm[0].value;
 				drawFlower();
 			}
 		} 

@@ -1,27 +1,61 @@
 var FlowerDrawer = function( canvas )
 {
 	this.ctx = canvas.getContext("2d");
-	this.lineColor = 0;
+	this.elementsDict = {};
+	this.elementsArray = [];
 }
 
-FlowerDrawer.prototype.draw = function( element, distance, sides, startingAngle, waves ) 
+FlowerDrawer.prototype.prepareDrawing = function( startX, startY, distance, sides, startingAngle, waves, color ) 
+{
+	this.elementsDict = {};
+	this.elementsArray = [];
+	color = tinycolor( color );
+	this.colors = color.analogous().map(function(t) { t.setAlpha( color.getAlpha() ); return t.toRgbString(); });
+	this.prepareModels( startX, startY, distance, sides, startingAngle, waves );
+};
+
+FlowerDrawer.prototype.prepareModels = function( startX, startY, distance, sides, startingAngle, waves ) 
 {
 	waves--;
-	
 	var angularIncrement = ( 2 * Math.PI ) / sides;
-	var originalX = element.model.x;
-	var originalY = element.model.y;
-
+	var elementsInStep = [];
+	var tempObject;
+	
 	for (var i = 0; i < sides; i++) 
 	{
 		var angle = startingAngle + ( i * angularIncrement );
-		var x = distance * Math.cos( angle ) + originalX;
-		var y = distance * Math.sin( angle ) + originalY;
-		element.clone( x, y );
-		if( waves > 0 )
+		var x = round( distance * Math.cos( angle ) + startX );
+		var y = round( distance * Math.sin( angle ) + startY );
+
+		if( this.elementsDict[ x ] == undefined )
+			this.elementsDict[ x ] = [];
+
+		tempObject = { x: x, y: y, color: this.colors[ waves ] };
+		elementsInStep.push( tempObject );
+		
+		if( this.elementsDict[ x ][ y ] == undefined )
 		{
-			this.draw( element, distance, sides, startingAngle, waves );
+			this.elementsDict[ x ][ y ] = tempObject;
+			this.elementsArray.push( tempObject );
 		}
+	}
+	if( waves > 0 )
+	{
+		for (i = 0; i < elementsInStep.length; i++) 
+		{
+			this.prepareModels( elementsInStep[ i ].x, elementsInStep[ i ].y, distance, sides, startingAngle, waves );
+		}
+	}
+};
+
+FlowerDrawer.prototype.draw = function( element ) 
+{
+	var elementModel;
+	for (var i = 0; i < this.elementsArray.length; i++) 
+	{
+		elementModel = this.elementsArray[ i ];
+		element.update( { color: elementModel.color } );
+		this.ctx.drawImage( element.canvas, elementModel.x - element.model.size, elementModel.y - element.model.size );
 	}
 };
 

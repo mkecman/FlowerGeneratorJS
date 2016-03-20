@@ -1,8 +1,8 @@
-var ElementModel = function( x, y, radius, fill, color )
+var ElementModel = function( x, y, size, fill, color )
 {
 	this.x = x;
 	this.y = y;
-	this.radius = radius;
+	this.size = size;
 	this.fill = fill;
 	this.color = color;
 }

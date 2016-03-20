@@ -1,12 +1,11 @@
-var ElementCircle = function( ctx, model )
+var ElementCircle = function( model )
 {
-	this.ctx = ctx;
-	this.model = model;
+	this.setup( model );
 }
 
 inheritsFrom(ElementCircle, Element);
 
 ElementCircle.prototype.drawShape = function() 
 {
-	this.ctx.arc( this.model.x, this.model.y, this.model.radius, 0, 2*Math.PI );
+	this.ctx.arc( this.model.size, this.model.size, this.model.size, 0, 2*Math.PI );
 };

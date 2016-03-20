@@ -24,6 +24,7 @@
         <script src="js/jqueryphp/jquery.php.js" type="text/javascript"></script>
         <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <script type="text/javascript" src="js/jqColorPicker.min.js"></script>
+        <script type="text/javascript" src="js/tinycolor.js"></script>
         
     </head>
     <body>
@@ -43,8 +44,9 @@
         <label id="sliderRotationLabel"></label>
         <div style="padding-top: 10px;">
             <label>Background:</label><input id="backgroundColorPicker" class="color" value="rgb(79, 87, 95)" /></br>
-            <label>Line:</label><input id="lineColorPicker" class="color" value="rgb(223, 147, 31)" />
+            <label>Line:</label><input id="lineColorPicker" class="color" value="rgb(255, 255, 255, 255)" />
         </div>
+        <canvas id="element-canvas"></canvas>
     </div>
             
 <?php
@@ -61,8 +63,6 @@ $jsInc = '<script src="js/Globals.js?v='. $version .'"></script>' .
 print $jsInc;
 
 ?>
-        
-
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
             /*(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
