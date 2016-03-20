@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"flower",
+				"flower-canvas"
+			],
+			[
+				"flow",
+				"flowerModel"
+			],
+			[
+				"Ele",
+				"ElementCircle"
+			],
+			[
+				"dr",
+				"drawShape"
+			],
+			[
 				"ori",
 				"originalY"
 			],
@@ -39,7 +55,15 @@
 			"file": "index.php",
 			"settings":
 			{
-				"buffer_size": 3305,
+				"buffer_size": 4115,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "css/main.css",
+			"settings":
+			{
+				"buffer_size": 4678,
 				"line_ending": "Windows"
 			}
 		},
@@ -47,23 +71,15 @@
 			"file": "js/Globals.js",
 			"settings":
 			{
-				"buffer_size": 42,
+				"buffer_size": 218,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "js/main.js",
+			"file": "js/Element.js",
 			"settings":
 			{
-				"buffer_size": 339,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/FlowerDrawer.js",
-			"settings":
-			{
-				"buffer_size": 933,
+				"buffer_size": 463,
 				"line_ending": "Windows"
 			}
 		},
@@ -71,9 +87,33 @@
 			"file": "js/ElementCircle.js",
 			"settings":
 			{
-				"buffer_size": 413,
+				"buffer_size": 256,
 				"line_ending": "Windows",
 				"name": "var CircleElement = function"
+			}
+		},
+		{
+			"file": "js/ElementRectangle.js",
+			"settings":
+			{
+				"buffer_size": 408,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/main.js",
+			"settings":
+			{
+				"buffer_size": 2469,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/FlowerDrawer.js",
+			"settings":
+			{
+				"buffer_size": 1035,
+				"line_ending": "Windows"
 			}
 		},
 		{
@@ -119,10 +159,12 @@
 	"expanded_folders":
 	[
 		"/C/www/flower",
+		"/C/www/flower/css",
 		"/C/www/flower/js"
 	],
 	"file_history":
 	[
+		"/C/www/flower/js/jqColorPicker.js",
 		"/C/www/flower/js/Stats.js",
 		"/C/www/flower/version",
 		"/C/www/dr/develop/version",
@@ -151,6 +193,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"sliderDistanceLabel",
+			"sliderSizeLabel",
 			"CircleElement",
 			"nutrientsMax"
 		],
@@ -160,6 +204,9 @@
 		"regex": false,
 		"replace_history":
 		[
+			"sliderWavesLabel",
+			"sliderSidesLabel",
+			"sliderDistanceLabel",
 			"ElementCircle"
 		],
 		"reverse": false,
@@ -171,7 +218,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -180,15 +227,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3305,
+						"buffer_size": 4115,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2535,
-								2535
+								2662,
+								2662
 							]
 						],
 						"settings":
@@ -198,27 +245,85 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 627.0,
+						"translation.y": 456.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "js/Globals.js",
+					"file": "css/main.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 42,
+						"buffer_size": 4678,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								10,
-								10
+								195,
+								195
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "js/Globals.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 218,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								216,
+								216
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "js/Element.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 463,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								281,
+								281
 							]
 						],
 						"settings":
@@ -233,76 +338,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "js/main.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 339,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								232,
-								232
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "js/FlowerDrawer.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 933,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								930,
-								930
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
 					"buffer": 4,
 					"file": "js/ElementCircle.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 413,
+						"buffer_size": 256,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								188,
-								193
+								255,
+								0
 							]
 						],
 						"settings":
@@ -314,11 +363,95 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
 					"buffer": 5,
+					"file": "js/ElementRectangle.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 408,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								284,
+								284
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "js/main.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2469,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								198,
+								198
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "js/FlowerDrawer.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1035,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1032,
+								1032
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
 					"file": "js/ElementModel.js",
 					"semi_transient": false,
 					"settings":
@@ -343,7 +476,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 8,
 					"type": "text"
 				}
 			]
@@ -430,7 +563,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 356.0,
+	"side_bar_width": 268.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

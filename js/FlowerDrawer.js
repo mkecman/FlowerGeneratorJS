@@ -24,10 +24,16 @@ FlowerDrawer.prototype.draw = function( element, distance, sides, startingAngle,
 	}
 };
 
+FlowerDrawer.prototype.clear = function() 
+{
+	this.ctx.clearRect( 0, 0, this.width, this.height );
+};
+
 FlowerDrawer.prototype.setCTXSize = function( widthScale, heightScale ) 
 {
-	this.width = window.innerWidth * widthScale;
-	this.height = window.innerHeight * heightScale;
+	this.width = $( "#flower-canvas" ).width();
+	this.height = $( "#flower-canvas" ).height();
+	
 	this.ctx.width  = this.width;
 	this.ctx.height = this.height;
 	this.ctx.canvas.width  = this.width;

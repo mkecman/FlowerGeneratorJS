@@ -16,8 +16,15 @@
 
         <link rel="stylesheet" href="css/normalize.min.css">
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+        <script src="js/jqueryphp/jquery.php.js" type="text/javascript"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script type="text/javascript" src="js/colors.js"></script>
+        <script type="text/javascript" src="js/jqColorPicker.min.js"></script>
         
     </head>
     <body>
@@ -42,24 +49,28 @@
 
         <div class="main-container">
             <div class="main wrapper clearfix">
-                <article>
-                    <button onclick="drawFlower()">DRAW</button>
-                </article>
-                <article id="flower-container">
+                <div id="toolbar">
+                    <label id="sliderSizeLabel"></label>
+                    <label id="sliderDistanceLabel"></label>
+                    <label id="sliderSidesLabel"></label>
+                    <label id="sliderWavesLabel"></label>
+                    <input id="backgroundColorPicker" class="color" value="rgb(142, 165, 186)" />
+                    <input id="lineColorPicker" class="color" value="rgb(53, 63, 72)" />
+                </div>
+                <div id="main-canvas">
                     <canvas id="flower-canvas"></canvas>
-                </article>
+                </div>
             </div> <!-- #main -->
         </div> <!-- #main-container -->
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-        <script src="js/jqueryphp/jquery.php.js" type="text/javascript"></script>
 
 <?php
 $version = file_get_contents( "version" );
 
 $jsInc = '<script src="js/Globals.js?v='. $version .'"></script>' .
         '<script src="js/FlowerDrawer.js?v='. $version .'"></script>' .
+        '<script src="js/Element.js?v='. $version .'"></script>' .
+        '<script src="js/ElementRectangle.js?v='. $version .'"></script>' .
         '<script src="js/ElementCircle.js?v='. $version .'"></script>' .
         '<script src="js/ElementModel.js?v='. $version .'"></script>' .
         '<script src="js/main.js?v='. $version .'"></script>';
