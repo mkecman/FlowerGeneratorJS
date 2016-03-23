@@ -13,9 +13,9 @@ Element.prototype.setup = function( model )
 	this.model = model;
 };
 
-Element.prototype.draw = function() 
+Element.prototype.draw = function( newModel ) 
 {
-	//this.ctx.clearRect( 0, 0, this.model.size, this.model.size );
+	this.ctx.clearRect( 0, 0, this.canvas.width, this.canvas.height );
 	this.ctx.beginPath();
 
 	this.ctx.strokeStyle = this.model.color;
@@ -30,11 +30,19 @@ Element.prototype.draw = function()
 	}
 	else
 		this.ctx.stroke();
+
+	if( DEBUG )
+	{
+		this.ctx.font="16px Arial";
+		//var text = newModel.x + "," + newModel.y;
+		var text = newModel.wave;
+		this.ctx.fillText( text, ( this.canvas.width / 2 ) - ( this.ctx.measureText( text ).width / 2 ), this.canvas.height / 2 );
+	}
 };
 
 Element.prototype.update = function( newModel ) 
 {
-	var changed = false;
+	var changed = true;
 	
 	if( newModel.size != undefined && this.model.size != newModel.size )
 	{
@@ -54,7 +62,7 @@ Element.prototype.update = function( newModel )
 	
 	if( changed )
 	{	
-		this.draw();
+		this.draw( newModel );
 	}
 };
 

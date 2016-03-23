@@ -25,6 +25,7 @@
         <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <script type="text/javascript" src="js/jqColorPicker.min.js"></script>
         <script type="text/javascript" src="js/tinycolor.js"></script>
+        <script type="text/javascript" src="js/randomColor.js"></script>
         
     </head>
     <body>
@@ -39,6 +40,7 @@
         <label onclick="toggleToolbar();">TOOLBAR</label><br/>
         <label id="sliderSizeLabel"></label>
         <label id="sliderDistanceLabel"></label>
+        <label id="sliderPolygonsLabel"></label>
         <label id="sliderSidesLabel"></label>
         <label id="sliderWavesLabel"></label>
         <label id="sliderRotationLabel"></label>
@@ -57,6 +59,8 @@ $jsInc = '<script src="js/Globals.js?v='. $version .'"></script>' .
         '<script src="js/Element.js?v='. $version .'"></script>' .
         '<script src="js/ElementRectangle.js?v='. $version .'"></script>' .
         '<script src="js/ElementCircle.js?v='. $version .'"></script>' .
+        '<script src="js/ElementHexagon.js?v='. $version .'"></script>' .
+        '<script src="js/ElementPolygon.js?v='. $version .'"></script>' .
         '<script src="js/ElementModel.js?v='. $version .'"></script>' .
         '<script src="js/main.js?v='. $version .'"></script>';
 

@@ -1,13 +1,15 @@
 var ENABLE_ANIMATIONS = false;
+var DEBUG = false;
 
 var flower;
 var flowerModel = 
 {
-	size: 50,
+	size: 25,
 	distance: 50,
-	sides: 3,
-	waves: 3,
-	rotation: 0
+	sides: 6,
+	waves: 4,
+	rotation: 0,
+	polygons: 6
 }
 
 window.requestAnimationFrame = window.requestAnimationFrame

@@ -9,14 +9,13 @@ window.onload = function()
 function drawFlower() 
 {
 	var model = new ElementModel( flower.width / 2, flower.height / 2, flowerModel.size, false, lineColor );
-	var element = new ElementCircle( model );
-	//var element = new Element( model );
-	var rectangle = new ElementRectangle( model );
 
 	flower.prepareDrawing( flower.width / 2, flower.height / 2, flowerModel.distance, flowerModel.sides, flowerModel.rotation, flowerModel.waves, lineColor );
-
+	
 	flower.clear();
-	flower.draw( element );
+
+	model.polygons = flowerModel.polygons;
+	flower.draw( new ElementPolygon( model ) );
 }
 
 var toolbarActive = true;
@@ -90,6 +89,23 @@ $(function()
     });
     sliderDistanceLabel.text( "Distance: " + 50 );
 
+    var sliderPolygonsLabel = $( "#sliderPolygonsLabel" );
+    var slider = $( "<div id='slider'></div>" ).insertAfter( sliderPolygonsLabel ).slider(
+    {
+      min: 2,
+      max: 10,
+      step: 1,
+      range: "min",
+      value: 6,
+      slide: function( event, ui ) 
+      {
+        flowerModel.polygons = ui.value;
+        sliderPolygonsLabel.text( "Polygons: " + ui.value );
+        drawFlower();
+      }
+    });
+    sliderPolygonsLabel.text( "Polygons: " + 6 );
+
     var sliderSidesLabel = $( "#sliderSidesLabel" );
     var slider = $( "<div id='slider'></div>" ).insertAfter( sliderSidesLabel ).slider(
     {
@@ -138,6 +154,8 @@ $(function()
       }
     });
     sliderRotationLabel.text( "Rotation: " + 0 );
+
+    
 
 });
        
