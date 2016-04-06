@@ -10,6 +10,7 @@
     background-color: #444;
     color: #FFF;
     overflow: hidden;
+    text-transform: capitalize;
 }
 
 #main-canvas { width: 100%; min-height: 100%; }

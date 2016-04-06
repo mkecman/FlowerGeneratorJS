@@ -1,161 +1,46 @@
+var flower;
+var flowerModel = 
+{
+	size: 100,
+	distance: 100,
+	sides: 6,
+	waves: 4,
+	rotation: 0,
+	polygons: 10,
+	fill: false,
+	clear: true
+}
+var elementPolygon;
+var elementCircle;
+
 window.onload = function()
 {
-	flower = new FlowerDrawer( document.getElementById("flower-canvas") );
-	flower.maximizeCanvas();
-	setupColorPickers();
+	uiSetup();
+
+	elementCircle = new ElementCircle( flowerModel );
+	elementPolygon = new ElementPolygon( flowerModel );
+
+	flower = new FlowerDrawer( document.getElementById( "flower-canvas" ), flowerModel );
 	drawFlower();
 };
 
 function drawFlower() 
 {
-	var model = new ElementModel( flower.width / 2, flower.height / 2, flowerModel.size, false, lineColor );
-
-	flower.prepareDrawing( flower.width / 2, flower.height / 2, flowerModel.distance, flowerModel.sides, flowerModel.rotation, flowerModel.waves, lineColor );
+	flower.prepareDrawing();
 	
-	flower.clear();
-
-	model.polygons = flowerModel.polygons;
-	flower.draw( new ElementPolygon( model ) );
-}
-
-var toolbarActive = true;
-function toggleToolbar() 
-{
-	if( toolbarActive )
-	{
-		$("#toolbar").css( { "width": 70, "height": 15 } );
-		toolbarActive = false;
-	}
+	if( flowerModel.polygons == 10 )
+		flower.draw( elementCircle );
 	else
-	{
-		$("#toolbar").css( { "width": 250, "height": "auto" } );
-		toolbarActive = true;
-	}
+		flower.draw( elementPolygon );
+	
+	//var t0 = performance.now();
+	//var t1 = performance.now();
+	//return (t1 - t0).toFixed(2);
 }
 
-var lineColor = "";
-function setupColorPickers() 
+function handleResize() 
 {
-	var options = 
-	{ 	renderCallback: function($elm, toggled) 
-		{ 
-			if( $elm[0] === $('#backgroundColorPicker')[0] )
-				$('#main-canvas').css( "backgroundColor", $elm[0].style.backgroundColor ); 
-
-			if( $elm[0] === $('#lineColorPicker')[0] )
-			{
-				lineColor = $elm[0].value;
-				drawFlower();
-			}
-		} 
-	};
-	$('.color').colorPicker( options );
-
-	$('#main-canvas').css( "backgroundColor", $('#backgroundColorPicker')[0].value );
-	lineColor = $('#lineColorPicker')[0].value;
+	flower.maximizeCanvas();
+	drawFlower();
 }
 
-$(function() 
-{
-    var sliderSizeLabel = $( "#sliderSizeLabel" );
-    var slider = $( "<div id='slider'></div>" ).insertAfter( sliderSizeLabel ).slider(
-    {
-      min: 1,
-      max: 200,
-      range: "min",
-      value: 50,
-      slide: function( event, ui ) 
-      {
-        flowerModel.size = ui.value;
-        sliderSizeLabel.text( "Size: " + ui.value );
-        drawFlower();
-      }
-    });
-    sliderSizeLabel.text( "Size: " + 50 );
-
-    var sliderDistanceLabel = $( "#sliderDistanceLabel" );
-    var slider = $( "<div id='slider'></div>" ).insertAfter( sliderDistanceLabel ).slider(
-    {
-      min: 1,
-      max: 200,
-      range: "min",
-      value: 50,
-      slide: function( event, ui ) 
-      {
-        flowerModel.distance = ui.value;
-        sliderDistanceLabel.text( "Distance: " + ui.value );
-        drawFlower();
-      }
-    });
-    sliderDistanceLabel.text( "Distance: " + 50 );
-
-    var sliderPolygonsLabel = $( "#sliderPolygonsLabel" );
-    var slider = $( "<div id='slider'></div>" ).insertAfter( sliderPolygonsLabel ).slider(
-    {
-      min: 2,
-      max: 10,
-      step: 1,
-      range: "min",
-      value: 6,
-      slide: function( event, ui ) 
-      {
-        flowerModel.polygons = ui.value;
-        sliderPolygonsLabel.text( "Polygons: " + ui.value );
-        drawFlower();
-      }
-    });
-    sliderPolygonsLabel.text( "Polygons: " + 6 );
-
-    var sliderSidesLabel = $( "#sliderSidesLabel" );
-    var slider = $( "<div id='slider'></div>" ).insertAfter( sliderSidesLabel ).slider(
-    {
-      min: 1,
-      max: 12,
-      range: "min",
-      value: 3,
-      slide: function( event, ui ) 
-      {
-        flowerModel.sides = ui.value;
-        sliderSidesLabel.text( "Sides: " + ui.value );
-        drawFlower();
-      }
-    });
-    sliderSidesLabel.text( "Sides: " + 3 );
-
-    var sliderWavesLabel = $( "#sliderWavesLabel" );
-    var slider = $( "<div id='slider'></div>" ).insertAfter( sliderWavesLabel ).slider(
-    {
-      min: 1,
-      max: 7,
-      range: "min",
-      value: 3,
-      slide: function( event, ui ) 
-      {
-        flowerModel.waves = ui.value;
-        sliderWavesLabel.text( "Waves: " + ui.value );
-        drawFlower();
-      }
-    });
-    sliderWavesLabel.text( "Waves: " + 3 );
-
-    var sliderRotationLabel = $( "#sliderRotationLabel" );
-    var slider = $( "<div id='slider'></div>" ).insertAfter( sliderRotationLabel ).slider(
-    {
-      min: 0,
-      max: Math.PI,
-      step: 0.02,
-      range: "min",
-      value: 0,
-      slide: function( event, ui ) 
-      {
-        flowerModel.rotation = ui.value;
-        sliderRotationLabel.text( "Rotation: " + ui.value );
-        drawFlower();
-      }
-    });
-    sliderRotationLabel.text( "Rotation: " + 0 );
-
-    
-
-});
-       

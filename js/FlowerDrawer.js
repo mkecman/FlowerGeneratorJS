@@ -1,64 +1,56 @@
-var FlowerDrawer = function( canvas )
+var FlowerDrawer = function( canvas, model )
 {
 	this.ctx = canvas.getContext("2d");
+	this.model = model;
 	this.elementsDict = {};
 	this.elementsArray = [];
-	this.colors = randomColor({hue: 'random',luminosity: 'light',count: 7});
+	this.colors = randomColor({hue: 'random',luminosity: 'light',count: 8});
+	this.maximizeCanvas();
 }
 
-FlowerDrawer.prototype.prepareDrawing = function( startX, startY, distance, sides, startingAngle, waves, color ) 
+FlowerDrawer.prototype.prepareDrawing = function() 
 {
 	this.elementsDict = {};
 	this.elementsArray = [];
-	color = tinycolor( color );
-	/*this.colors = color.tetrad().map(function(t) { t.setAlpha( color.getAlpha() ); return t.toRgbString(); });
-	var color2 = tinycolor( color.monochromatic() );
-	var colors2 = color2.tetrad().map(function(t) { t.setAlpha( color.getAlpha() ); return t.toRgbString(); });
-	this.colors = this.colors.concat( colors2 );
-	*/
-
-
 	this.new = 0;
 	this.duplicate = 0;
 	this.wave = 0;
-	this.maxWaves = waves;
-	var elements = [ { x: startX, y: startY, color: this.colors[ 1 % (this.colors.length - 1) ], wave:0 } ];
-	this.addWave( elements, distance, sides, startingAngle, 0 );
+	var elements = [ { x: this.width / 2, y: this.height / 2, color: this.colors[ 1 % (this.colors.length - 1) ], wave:0 } ];
+	this.angularIncrement = ( 2 * Math.PI ) / this.model.sides;
 
+	this.addWave( elements, 0 );
 };
 
-FlowerDrawer.prototype.addWave = function( elements, distance, sides, startingAngle, wave ) 
+FlowerDrawer.prototype.addWave = function( elements, wave ) 
 {
 	var elementsInWave = [];
 	for (var i = 0; i < elements.length; i++) 
 	{
-		elementsInWave = elementsInWave.concat( this.prepareModels( elements[i].x, elements[i].y, distance, sides, startingAngle, wave ) );
+		elementsInWave = elementsInWave.concat( this.prepareModels( elements[i].x, elements[i].y, wave ) );
 	}
 	wave++;
-	if( wave < this.maxWaves )
-		this.addWave( elementsInWave, distance, sides, startingAngle, wave );
+	if( wave < this.model.waves )
+		this.addWave( elementsInWave, wave );
 };
 
-FlowerDrawer.prototype.prepareModels = function( startX, startY, distance, sides, startingAngle, wave ) 
+FlowerDrawer.prototype.prepareModels = function( startX, startY, wave ) 
 {
-	var angularIncrement = ( 2 * Math.PI ) / sides;
 	var elementsInStep = [];
-	var tempObject;
+	var angle, x, y, tempObject;
 	
-	for (var i = 0; i < sides; i++) 
+	for (var i = 0; i < this.model.sides; i++) 
 	{
-		var angle = startingAngle + ( i * angularIncrement );
-		var x = Math.floor( distance * ( ( Math.cos( angle ) * 1 ) / 1 ) + startX );
-		var y = Math.floor( distance * ( ( Math.sin( angle ) * 1 ) / 1 ) + startY );
-		
-		tempObject = { x: x, y: y, color: this.colors[ (wave + 1) % (this.colors.length - 1) ], wave:wave };
+		angle = this.model.rotation + ( i * this.angularIncrement );
+		x = Math.floor( this.model.distance * Math.cos( angle ) + startX );
+		y = Math.floor( this.model.distance * Math.sin( angle ) + startY );
 		
 		if( this.elementsDict[ x ] == undefined )
 			this.elementsDict[ x ] = [];
 		
-		if( !this.checkIfExist( x, y, 3 ) )
+		if( !this.checkIfExist( x, y, 5 ) )
 		{
 			this.new++;
+			tempObject = { x: x, y: y, color: this.colors[ (wave + 1) % (this.colors.length - 1) ], wave:wave };
 			this.elementsDict[ x ][ y ] = tempObject;
 			this.elementsArray.push( tempObject );
 			elementsInStep.push( tempObject );
@@ -93,14 +85,34 @@ FlowerDrawer.prototype.checkIfExist = function( x, y, range )
 
 FlowerDrawer.prototype.draw = function( element ) 
 {
-	//_logm( this.new, this.duplicate );
-	var elementModel;
-	for( var i = 0; i < this.elementsArray.length; i++ )
+	if( this.model.clear )
+		this.clear();
+
+	element.updateCanvas();
+	this.mainElement = element;
+	this.currentElementIndex = 0;
+	this.drawMultiElement();
+};
+
+FlowerDrawer.prototype.drawMultiElement = function() 
+{
+	for (var i = 0; i < ELEMENTS_DRAWN_FRAME; i++) 
 	{
-		elementModel = this.elementsArray[ i ];
-		element.update( elementModel );
-		this.ctx.drawImage( element.canvas, elementModel.x - element.model.size, elementModel.y - element.model.size );
+		this.drawElement();
 	}
+	if( this.currentElementIndex < this.elementsArray.length )
+		requestAnimationFrame( function(){ this.flower.drawMultiElement() } );
+};
+
+FlowerDrawer.prototype.drawElement = function() 
+{
+	if( this.currentElementIndex >= this.elementsArray.length )
+		return;
+
+	var elementModel = this.elementsArray[ this.currentElementIndex ];
+	this.mainElement.update( elementModel );
+	this.ctx.drawImage( this.mainElement.canvas, elementModel.x - this.mainElement.model.size, elementModel.y - this.mainElement.model.size );
+	this.currentElementIndex++;
 };
 
 FlowerDrawer.prototype.clear = function() 

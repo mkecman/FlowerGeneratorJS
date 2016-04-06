@@ -1,16 +1,6 @@
 var ENABLE_ANIMATIONS = false;
 var DEBUG = false;
-
-var flower;
-var flowerModel = 
-{
-	size: 25,
-	distance: 50,
-	sides: 6,
-	waves: 4,
-	rotation: 0,
-	polygons: 6
-}
+var ELEMENTS_DRAWN_FRAME = 10000;
 
 window.requestAnimationFrame = window.requestAnimationFrame
     || window.mozRequestAnimationFrame
@@ -37,7 +27,7 @@ var _logm = function()
 	var output = "";
     for (i = 0; i < arguments.length; i++) 
     {
-    	output += arguments[ i ] + " : ";    
+    	output += arguments[ i ] + " : ";
     }
 	console.log( output );
 }
@@ -46,4 +36,10 @@ var getRandomInt = function(min, max)
 {
   if ( min < 0 ) min = 0;
   return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function median(sequence) 
+{
+  sequence.sort();
+  return sequence[Math.ceil(sequence.length / 2)];
 }

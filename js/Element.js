@@ -6,11 +6,16 @@ var Element = function( model )
 Element.prototype.setup = function( model ) 
 {
 	this.canvas = document.createElement('canvas');
-	//this.canvas = document.getElementById("element-canvas");
 	this.canvas.width = model.size*2;
 	this.canvas.height = model.size*2;
 	this.ctx = this.canvas.getContext("2d");
 	this.model = model;
+};
+
+Element.prototype.updateCanvas = function() 
+{
+	this.canvas.width = this.model.size * 2;
+	this.canvas.height = this.model.size * 2;
 };
 
 Element.prototype.draw = function( newModel ) 
@@ -42,7 +47,7 @@ Element.prototype.draw = function( newModel )
 
 Element.prototype.update = function( newModel ) 
 {
-	var changed = true;
+	var changed = false;
 	
 	if( newModel.size != undefined && this.model.size != newModel.size )
 	{
@@ -52,12 +57,12 @@ Element.prototype.update = function( newModel )
 	if( newModel.color != undefined && this.model.color != newModel.color )
 	{
 		changed = true;
-		this.model.color = newModel.color;	
+		this.model.color = newModel.color;
 	}
 	if( newModel.fill != undefined && this.model.fill != newModel.fill )
 	{
 		changed = true;
-		this.model.fill = newModel.fill;	
+		this.model.fill = newModel.fill;
 	}
 	
 	if( changed )
@@ -69,11 +74,4 @@ Element.prototype.update = function( newModel )
 Element.prototype.drawShape = function() 
 {
 	//implement your own
-};
-
-Element.prototype.clone = function( x, y ) 
-{
-	this.model.x = x;
-	this.model.y = y;
-	this.draw();
 };

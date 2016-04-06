@@ -28,7 +28,7 @@
         <script type="text/javascript" src="js/randomColor.js"></script>
         
     </head>
-    <body>
+    <body onresize="handleResize()">
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -37,13 +37,15 @@
         <canvas id="flower-canvas"></canvas>
     </div>
     <div id="toolbar">
-        <label onclick="toggleToolbar();">TOOLBAR</label><br/>
+        <label onclick="uiToggleToolbar();">TOOLBAR</label><br/>
         <label id="sliderSizeLabel"></label>
         <label id="sliderDistanceLabel"></label>
         <label id="sliderPolygonsLabel"></label>
         <label id="sliderSidesLabel"></label>
         <label id="sliderWavesLabel"></label>
-        <label id="sliderRotationLabel"></label>
+        <label id="sliderRotationLabel"></label><br/>
+        <label onclick="uiToggleFill()">Fill <input type="checkbox" id="fill"></label>
+        <label onclick="uiToggleClear()">Clear <input type="checkbox" id="clear" checked="checked"></label>
         <div style="padding-top: 10px;">
             <label>Background:</label><input id="backgroundColorPicker" class="color" value="rgb(79, 87, 95)" /></br>
             <label>Line:</label><input id="lineColorPicker" class="color" value="rgb(0, 128, 255)" />
@@ -57,11 +59,9 @@ $version = file_get_contents( "version" );
 $jsInc = '<script src="js/Globals.js?v='. $version .'"></script>' .
         '<script src="js/FlowerDrawer.js?v='. $version .'"></script>' .
         '<script src="js/Element.js?v='. $version .'"></script>' .
-        '<script src="js/ElementRectangle.js?v='. $version .'"></script>' .
         '<script src="js/ElementCircle.js?v='. $version .'"></script>' .
-        '<script src="js/ElementHexagon.js?v='. $version .'"></script>' .
         '<script src="js/ElementPolygon.js?v='. $version .'"></script>' .
-        '<script src="js/ElementModel.js?v='. $version .'"></script>' .
+        '<script src="js/UI.js?v='. $version .'"></script>' .
         '<script src="js/main.js?v='. $version .'"></script>';
 
 print $jsInc;
