@@ -4,7 +4,6 @@ var FlowerDrawer = function( canvas, model )
 	this.model = model;
 	this.elementsDict = {};
 	this.elementsArray = [];
-	this.colors = randomColor({hue: 'random',luminosity: 'light',count: 8});
 	this.maximizeCanvas();
 }
 
@@ -15,7 +14,7 @@ FlowerDrawer.prototype.prepareDrawing = function()
 	this.new = 0;
 	this.duplicate = 0;
 	this.wave = 0;
-	var elements = [ { x: this.width / 2, y: this.height / 2, color: this.colors[ 1 % (this.colors.length - 1) ], wave:0 } ];
+	var elements = [ { x: this.width / 2, y: this.height / 2, color: this.model.colors[ 0 ], wave:0 } ];
 	this.angularIncrement = ( 2 * Math.PI ) / this.model.sides;
 
 	this.addWave( elements, 0 );
@@ -50,7 +49,7 @@ FlowerDrawer.prototype.prepareModels = function( startX, startY, wave )
 		if( !this.checkIfExist( x, y, 5 ) )
 		{
 			this.new++;
-			tempObject = { x: x, y: y, color: this.colors[ (wave + 1) % (this.colors.length - 1) ], wave:wave };
+			tempObject = { x: x, y: y, color: this.model.colors[ wave ], wave:wave };
 			this.elementsDict[ x ][ y ] = tempObject;
 			this.elementsArray.push( tempObject );
 			elementsInStep.push( tempObject );

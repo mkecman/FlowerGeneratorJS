@@ -41,6 +41,7 @@ Element.prototype.draw = function( newModel )
 		this.ctx.font="16px Arial";
 		//var text = newModel.x + "," + newModel.y;
 		var text = newModel.wave;
+		this.ctx.fillStyle = 'black';
 		this.ctx.fillText( text, ( this.canvas.width / 2 ) - ( this.ctx.measureText( text ).width / 2 ), this.canvas.height / 2 );
 	}
 };

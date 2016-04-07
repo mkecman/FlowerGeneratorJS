@@ -21,20 +21,46 @@ function uiSetupColorPickers()
 	{ 	
 		renderCallback: function($elm, toggled) 
 		{ 
-			if( $elm[0] === $('#backgroundColorPicker')[0] )
-				$('#main-canvas').css( "backgroundColor", $elm[0].style.backgroundColor ); 
-
-			if( $elm[0] === $('#lineColorPicker')[0] )
+			var index = $elm.attr('id').charAt(6);
+			if( $.isNumeric( index ) )
 			{
-				lineColor = $elm[0].value;
+				flowerModel.colors[ index ] = $elm.css( "backgroundColor" );
 				drawFlower();
 			}
-		} 
-	};
-	$('.color').colorPicker( options );
+			else
+				$('#main-canvas').css( "backgroundColor", $('#backgroundColorPicker').val() );
 
-	$('#main-canvas').css( "backgroundColor", $('#backgroundColorPicker')[0].value );
-	lineColor = $('#lineColorPicker')[0].value;
+		},
+		opacity:false
+	};
+	$('#backgroundColorPicker').colorPicker( options );
+	$('#main-canvas').css( "backgroundColor", $('#backgroundColorPicker').val() );
+
+	generateCPs( 7 );
+	setupCPs( 7 );
+}
+
+function generateCPs( amount ) 
+{
+	var output = "";
+	for (var i = 0; i < amount; i++) 
+	{
+		output += '<label>#'+ (i+1) +' Wave Color:</label><input id="waveCP'+ i +'" value="'+ flowerModel.colors[ i ] +'" /><br/>';
+	}
+	$('#waveColors').html( output );
+}
+
+function setupCPs( amount ) 
+{
+	for (var i = 0; i < amount; i++) 
+	{
+		$('#waveCP'+i ).colorPicker();
+	}
+}
+
+function setupColorPicker( wave ) 
+{
+	var tempHtml = '<label>#1 Wave Color:</label><input id="waveCP" value="" />';
 }
 
 var toolbarActive = true;

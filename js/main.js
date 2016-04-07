@@ -8,7 +8,8 @@ var flowerModel =
 	rotation: 0,
 	polygons: 10,
 	fill: false,
-	clear: true
+	clear: true,
+	colors: randomColor({hue: 'random',luminosity: 'light',count: 7})
 }
 var elementPolygon;
 var elementCircle;

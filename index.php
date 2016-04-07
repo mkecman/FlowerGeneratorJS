@@ -47,8 +47,8 @@
         <label onclick="uiToggleFill()">Fill <input type="checkbox" id="fill"></label>
         <label onclick="uiToggleClear()">Clear <input type="checkbox" id="clear" checked="checked"></label>
         <div style="padding-top: 10px;">
-            <label>Background:</label><input id="backgroundColorPicker" class="color" value="rgb(79, 87, 95)" /></br>
-            <label>Line:</label><input id="lineColorPicker" class="color" value="rgb(0, 128, 255)" />
+            <label>Background:</label><input id="backgroundColorPicker" value="rgb(79, 87, 95)" /></br>
+            <div id="waveColors"></div>
         </div>
         <canvas id="element-canvas"></canvas>
     </div>
