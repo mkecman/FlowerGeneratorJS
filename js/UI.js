@@ -93,6 +93,7 @@ function uiToggleClear()
 	else 
 		flowerModel.clear = false;
 
+	_logm( $('#clear').prop('checked'), flowerModel.clear )
 	drawFlower();
 }
 

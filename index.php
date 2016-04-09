@@ -68,6 +68,7 @@ $jsInc = '<script src="js/Globals.js?v='. $version .'"></script>' .
 		'<script src="js/Element.js?v='. $version .'"></script>' .
 		'<script src="js/ElementCircle.js?v='. $version .'"></script>' .
 		'<script src="js/ElementPolygon.js?v='. $version .'"></script>' .
+		'<script src="js/CanvasThumbnail.js?v='. $version .'"></script>' .
 		'<script src="js/UI.js?v='. $version .'"></script>' .
 		'<script src="js/main.js?v='. $version .'"></script>';
 

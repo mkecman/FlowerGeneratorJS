@@ -85,10 +85,11 @@ FlowerDrawer.prototype.checkIfExist = function( x, y, range )
 FlowerDrawer.prototype.draw = function( element ) 
 {
 	if( this.model.clear )
+	{
 		this.clear();
-
-	this.ctx.fillStyle = this.model.bg_color;
-	this.ctx.fillRect( 0, 0, this.width, this.height );
+		this.ctx.fillStyle = this.model.bg_color;
+		this.ctx.fillRect( 0, 0, this.width, this.height );
+	}
 
 	element.updateCanvas();
 	this.mainElement = element;

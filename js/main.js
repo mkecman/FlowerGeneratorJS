@@ -14,6 +14,7 @@ var flowerModel =
 }
 var elementPolygon;
 var elementCircle;
+var thumbnailer;
 
 php.complete = function(XMLHttpRequest, textStatus) 
 {
@@ -31,6 +32,8 @@ window.onload = function()
 
 	elementCircle = new ElementCircle( flowerModel );
 	elementPolygon = new ElementPolygon( flowerModel );
+
+	thumbnailer = new CanvasThumbnail();
 
 	flower = new FlowerDrawer( document.getElementById( "flower-canvas" ), flowerModel );
 	drawFlower();
@@ -61,6 +64,8 @@ function handleFormSubmit()
 		var values = $('#flower-form').serializeArray();
 		values.push( { name:"json", value:JSON.stringify( flowerModel ) } );
 		values.push( { name:"image", value:$("#flower-canvas")[0].toDataURL("image/png") } );
+		var thumb = thumbnailer.make( $("#flower-canvas")[0], 200 );
+		values.push( { name:"thumb", value: thumb.toDataURL("image/png") } );
 		$.php('php/SaveFlower.php', values );
 	}
 }
