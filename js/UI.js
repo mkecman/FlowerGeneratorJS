@@ -23,18 +23,16 @@ function uiSetupColorPickers()
 		{ 
 			var index = $elm.attr('id').charAt(6);
 			if( $.isNumeric( index ) )
-			{
 				flowerModel.colors[ index ] = $elm.css( "backgroundColor" );
-				drawFlower();
-			}
 			else
-				$('#main-canvas').css( "backgroundColor", $('#backgroundColorPicker').val() );
-
+				flowerModel.bg_color = $('#backgroundColorPicker').val();
+			
+			drawFlower();
 		},
 		opacity:false
 	};
+	$('#backgroundColorPicker').val( flowerModel.bg_color );
 	$('#backgroundColorPicker').colorPicker( options );
-	$('#main-canvas').css( "backgroundColor", $('#backgroundColorPicker').val() );
 
 	generateCPs( 7 );
 	setupCPs( 7 );
@@ -45,7 +43,7 @@ function generateCPs( amount )
 	var output = "";
 	for (var i = 0; i < amount; i++) 
 	{
-		output += '<label>#'+ (i+1) +' Wave Color:</label><input id="waveCP'+ i +'" value="'+ flowerModel.colors[ i ] +'" /><br/>';
+		output += '<div style="padding-top: 3px;"><label>#'+ (i+1) +' Wave Color:</label><input id="waveCP'+ i +'" value="'+ flowerModel.colors[ i ] +'" /><br/></div>';
 	}
 	$('#waveColors').html( output );
 }

@@ -2,57 +2,141 @@
 
 #toolbar 
 { 
-    position: fixed; 
-    left: 0px; 
-    top: 0px; 
-    width: 250px; 
-    padding: 0.5em; 
-    background-color: #444;
-    color: #FFF;
-    overflow: hidden;
-    text-transform: capitalize;
+	position: fixed; 
+	left: 0px; 
+	top: 0px; 
+	width: 250px; 
+	padding: 0.5em; 
+	background-color: #222;
+	color: #FFF;
+	overflow: hidden;
+	text-transform: capitalize;
+	font-size: 14px;
 }
 
 #main-canvas { width: 100%; min-height: 100%; }
 #flower-canvas { width: 100%; min-height: 100%; }
 
+#flower-name,#flower-email
+{
+	width: 95%;
+	text-align: center;
+	margin-top: 5px;
+}
+
+#save-button 
+{
+	-webkit-border-radius: 7;
+	-moz-border-radius: 7;
+	border-radius: 7px;
+	border-style:none; 
+	color: #ffffff;
+	font-size: 16px;
+	background: #4db878;
+	padding: 10px 10px 10px 10px;
+	margin-top: 20px;
+	text-decoration: none;
+	width: 95%;
+}
+
+#save-button:hover 
+{
+	background: #31cc3b;
+	text-decoration: none;
+}
+
+input 
+{ 
+	padding:3px; 
+	font-size:12px; 
+	border-width:2px; 
+	border-style:solid; 
+	background-color:#878787; 
+	border-color:#000000; 
+	color:#ffffff;  
+} 
+input:focus { outline:none; } 
+
+input[type=checkbox].css-checkbox 
+{
+	position:absolute; 
+	z-index:-1000; 
+	left:-1000px; 
+	overflow: hidden; 
+	clip: rect(0 0 0 0); 
+	height:1px; 
+	width:1px; 
+	margin:-1px; 
+	padding:0; 
+	border:0;
+}
+
+input[type=checkbox].css-checkbox + label.css-label 
+{
+	padding-left:21px;
+	height:16px; 
+	display:inline-block;
+	line-height:16px;
+	background-repeat:no-repeat;
+	background-position: 0 0;
+	font-size:16px;
+	vertical-align:middle;
+	cursor:pointer;
+}
+
+input[type=checkbox].css-checkbox:checked + label.css-label 
+{
+	background-position: 0 -16px;
+}
+
+label.css-label 
+{
+background-image:url(http://csscheckbox.com/checkboxes/u/csscheckbox_17417636dce8c55c6c6073f9724aeeba.png);
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+
 .greenNumber
 {
-    color: #00FF00;
-    font-weight: bold;
+	color: #00FF00;
+	font-weight: bold;
 }
 
 .redNumber
 {
-    color: #FF0000;
-    font-weight: bold;
+	color: #FF0000;
+	font-weight: bold;
 }
 
 html {
-    color: #222;
-    font-size: 1.3em;
-    line-height: 1.4;
-    height: 100%;
-    overflow: hidden;
+	color: #222;
+	font-size: 1.3em;
+	line-height: 1.4;
+	height: 100%;
+	overflow: hidden;
 }
 
 ::-moz-selection {
-    background: #b3d4fc;
-    text-shadow: none;
+	background: #b3d4fc;
+	text-shadow: none;
 }
 
 ::selection {
-    background: #b3d4fc;
-    text-shadow: none;
+	background: #b3d4fc;
+	text-shadow: none;
 }
 
 hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 1em 0;
-    padding: 0;
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #ccc;
+	margin: 1em 0;
+	padding: 0;
 }
 
 audio,
@@ -61,240 +145,240 @@ iframe,
 img,
 svg,
 video {
-    vertical-align: middle;
+	vertical-align: middle;
 }
 
 fieldset {
-    border: 0;
-    margin: 0;
-    padding: 0;
+	border: 0;
+	margin: 0;
+	padding: 0;
 }
 
 textarea {
-    resize: vertical;
+	resize: vertical;
 }
 
 .browserupgrade {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
+	margin: 0.2em 0;
+	background: #ccc;
+	color: #000;
+	padding: 0.2em 0;
 }
 
 
 /* ===== Initializr Styles ==================================================
-   Author: Jonathan Verrecchia - verekia.com/initializr/responsive-template
-   ========================================================================== */
+	 Author: Jonathan Verrecchia - verekia.com/initializr/responsive-template
+	 ========================================================================== */
 
 body {
-    font: 12px/20px Helvetica, Helvetica Neue, Arial;
-    min-height: 100%;
+	font: 12px/20px Helvetica, Helvetica Neue, Arial;
+	min-height: 100%;
 }
 
 .wrapper {
-    /*margin: 0 2%;*/
-    margin: 0;
+	/*margin: 0 2%;*/
+	margin: 0;
 }
 
 /* ===================
-    ALL: Orange Theme
-   =================== */
+	ALL: Orange Theme
+	 =================== */
 
 .header-container {
-    border-bottom: 20px solid #268de4;
+	border-bottom: 20px solid #268de4;
 }
 
 .footer-container,
 .main aside {
-    border-top: 0px solid #268de4;
+	border-top: 0px solid #268de4;
 }
 
 .header-container,
 .footer-container,
 .main aside {
-    background: #d1e1e6;
+	background: #d1e1e6;
 }
 
 .title {
-    color: black;
+	color: black;
 }
 
 /* ==============
-    MOBILE: Menu
-   ============== */
+	MOBILE: Menu
+	 ============== */
 
 nav ul {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
 }
 
 nav a {
-    display: block;
-    margin-bottom: 10px;
-    padding: 15px 0;
+	display: block;
+	margin-bottom: 10px;
+	padding: 15px 0;
 
-    text-align: center;
-    text-decoration: none;
-    font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	font-weight: bold;
 
-    color: black;
-    background: #99d1e1;
+	color: black;
+	background: #99d1e1;
 }
 
 nav a:hover,
 nav a:visited {
-    color: black;
+	color: black;
 }
 
 nav a:hover {
-    text-decoration: underline;
+	text-decoration: underline;
 }
 
 /* ==============
-    MOBILE: Main
-   ============== */
+	MOBILE: Main
+	 ============== */
 
 .main {
-    padding: 0px;
+	padding: 0px;
 }
 
 .main article h1 {
-    font-size: 2em;
+	font-size: 2em;
 }
 
 .main aside {
-    color: black;
-    padding: 0px 5% 10px;
+	color: black;
+	padding: 0px 5% 10px;
 }
 
 .footer-container footer {
-    color: black;
-    padding: 20px 0;
+	color: black;
+	padding: 20px 0;
 }
 
 /* ===============
-    ALL: IE Fixes
-   =============== */
+	ALL: IE Fixes
+	 =============== */
 
 .ie7 .title {
-    padding-top: 20px;
+	padding-top: 20px;
 }
 
 /* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
+	 Author's custom styles
+	 ========================================================================== */
 
 
 
 /* ==========================================================================
-   Helper classes
-   ========================================================================== */
+	 Helper classes
+	 ========================================================================== */
 
 .hidden {
-    display: none !important;
-    visibility: hidden;
+	display: none !important;
+	visibility: hidden;
 }
 
 .visuallyhidden {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
 }
 
 .visuallyhidden.focusable:active,
 .visuallyhidden.focusable:focus {
-    clip: auto;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    position: static;
-    width: auto;
+	clip: auto;
+	height: auto;
+	margin: 0;
+	overflow: visible;
+	position: static;
+	width: auto;
 }
 
 .invisible {
-    visibility: hidden;
+	visibility: hidden;
 }
 
 .clearfix:before,
 .clearfix:after {
-    content: " ";
-    display: table;
+	content: " ";
+	display: table;
 }
 
 .clearfix:after {
-    clear: both;
+	clear: both;
 }
 
 .clearfix {
-    *zoom: 1;
+	*zoom: 1;
 }
 
 /* ==========================================================================
-   Print styles
-   ========================================================================== */
+	 Print styles
+	 ========================================================================== */
 
 @media print {
-    *,
-    *:before,
-    *:after {
-        background: transparent !important;
-        color: #000 !important;
-        box-shadow: none !important;
-        text-shadow: none !important;
-    }
+	*,
+	*:before,
+	*:after {
+		background: transparent !important;
+		color: #000 !important;
+		box-shadow: none !important;
+		text-shadow: none !important;
+	}
 
-    a,
-    a:visited {
-        text-decoration: underline;
-    }
+	a,
+	a:visited {
+		text-decoration: underline;
+	}
 
-    a[href]:after {
-        content: " (" attr(href) ")";
-    }
+	a[href]:after {
+		content: " (" attr(href) ")";
+	}
 
-    abbr[title]:after {
-        content: " (" attr(title) ")";
-    }
+	abbr[title]:after {
+		content: " (" attr(title) ")";
+	}
 
-    a[href^="#"]:after,
-    a[href^="javascript:"]:after {
-        content: "";
-    }
+	a[href^="#"]:after,
+	a[href^="javascript:"]:after {
+		content: "";
+	}
 
-    pre,
-    blockquote {
-        border: 1px solid #999;
-        page-break-inside: avoid;
-    }
+	pre,
+	blockquote {
+		border: 1px solid #999;
+		page-break-inside: avoid;
+	}
 
-    thead {
-        display: table-header-group;
-    }
+	thead {
+		display: table-header-group;
+	}
 
-    tr,
-    img {
-        page-break-inside: avoid;
-    }
+	tr,
+	img {
+		page-break-inside: avoid;
+	}
 
-    img {
-        max-width: 100% !important;
-    }
+	img {
+		max-width: 100% !important;
+	}
 
-    p,
-    h2,
-    h3 {
-        orphans: 3;
-        widows: 3;
-    }
+	p,
+	h2,
+	h3 {
+		orphans: 3;
+		widows: 3;
+	}
 
-    h2,
-    h3 {
-        page-break-after: avoid;
-    }
+	h2,
+	h3 {
+		page-break-after: avoid;
+	}
 }
