@@ -23,6 +23,7 @@ $.extend({
            type: "POST",
            data: params,
            dataType : "json",
+           crossDomain: true,
 
            /* Handlers */
 

@@ -136,9 +136,9 @@ function handleFormSubmit()
 
 		var values = $('#flower-form').serializeArray();
 		values.push( { name:"json", value:JSON.stringify( flowerModel ) } );
-		values.push( { name:"image", value:$("#flower-canvas")[0].toDataURL("image/png") } );
+		values.push( { name:"image", value:$("#flower-canvas")[0].toDataURL("image/png").replace(/^data:image\/(png|jpg);base64,/, "") } );
 		var thumb = thumbnailer.make( $("#flower-canvas")[0], 200 );
-		values.push( { name:"thumb", value: thumb.toDataURL("image/png") } );
+		values.push( { name:"thumb", value: thumb.toDataURL("image/png").replace(/^data:image\/(png|jpg);base64,/, "") } );
 		$.php('php/SaveFlower.php', values );
 	}
 }

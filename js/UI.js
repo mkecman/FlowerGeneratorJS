@@ -113,6 +113,21 @@ function uiToggleToolbar()
 	}
 }
 
+var galleryActive = true;
+function uiToggleGallery() 
+{
+	if( galleryActive )
+	{
+		$("#gallery").css( { "width": 70, "height": 15 } );
+		galleryActive = false;
+	}
+	else
+	{
+		$("#gallery").css( { "width": 222, "height": "100vh" } );
+		galleryActive = true;
+	}
+}
+
 function uiToggleFill() 
 {
 	if( $('#fill').prop('checked') )
