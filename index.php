@@ -26,6 +26,7 @@
 		<script type="text/javascript" src="js/jqColorPicker.min.js"></script>
 		<script type="text/javascript" src="js/tinycolor.js"></script>
 		<script type="text/javascript" src="js/randomColor.js"></script>
+		<script type="text/javascript" src="js/jquery.scrollbar.min.js"></script>
 		
 	</head>
 	<body onresize="handleResize()">
@@ -38,12 +39,12 @@
 	</div>
 	<div id="toolbar">
 		<label onclick="uiToggleToolbar();">TOOLBAR</label><br/>
-		<label id="sliderSizeLabel"></label>
-		<label id="sliderDistanceLabel"></label>
-		<label id="sliderPolygonsLabel"></label>
-		<label id="sliderSidesLabel"></label>
-		<label id="sliderWavesLabel"></label>
-		<label id="sliderRotationLabel"></label><br/>
+		<label id="sizeLabel"></label>
+		<label id="distanceLabel"></label>
+		<label id="polygonsLabel"></label>
+		<label id="sidesLabel"></label>
+		<label id="wavesLabel"></label>
+		<label id="rotationLabel"></label><br/>
 		<div style="padding-top: 10px;">
 			<label>Background Color:</label><input id="backgroundColorPicker" /></br>
 			<div id="waveColors"></div>
@@ -53,10 +54,25 @@
 		<hr/>
 		<div style="text-align: center;">
 			<form id="flower-form" onsubmit="handleFormSubmit(); return false;">
-				<input id="flower-name" name="name" placeholder="Name Your Flower (3 chars min)" pattern="[a-zA-Z0-9-_]{3,255}" value="" required oninput="handleNameChange()"></input>
-				<input id="flower-email" name="email" placeholder="Your Email (Optional)" type="email" ></input>
+				<input id="flower-name" name="name" placeholder="Name Your Flower" title="2 characters minimum" pattern=".{2,255}" value="" required oninput="handleNameChange()"></input>
+				<input id="flower-author" name="author" placeholder="Your Name (Optional)" title="2 characters minimum" pattern=".{2,255}" value="" ></input>
 				<button id="save-button">SAVE</button>
 			</form>
+		</div>
+	</div>
+	<div id="gallery">
+		<div id="gallery-header">
+			GALLERY
+			<select id="order-dropdown" title="Order By" onchange="handleOrderChange()">
+				<option selected="selected" value="created_ts">Latest</option>
+				<option value="views">Most Viewed</option>
+				<option value="likes">Most Liked</option>
+			</select>
+		</div>
+		<div id="gallery-thumbs" class="scrollbar-inner">
+		<div id="gallery-wrapper" >
+			
+		</div>
 		</div>
 	</div>
 			
@@ -69,6 +85,7 @@ $jsInc = '<script src="js/Globals.js?v='. $version .'"></script>' .
 		'<script src="js/ElementCircle.js?v='. $version .'"></script>' .
 		'<script src="js/ElementPolygon.js?v='. $version .'"></script>' .
 		'<script src="js/CanvasThumbnail.js?v='. $version .'"></script>' .
+		'<script src="js/FlowerGallery.js?v='. $version .'"></script>' .
 		'<script src="js/UI.js?v='. $version .'"></script>' .
 		'<script src="js/main.js?v='. $version .'"></script>';
 

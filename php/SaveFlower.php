@@ -2,18 +2,12 @@
 require_once "jQuery.php";
 require_once "MySQLSimple.php";
 
-$db = new MySQLSimple
-( 
-	"127.0.0.1", 
-	"root", 
-	"", 
-	"flower" 
-);
+$db = new MySQLSimple();
 
 $values = array
 (
 	'name' => $_POST[ "name" ],
-	'email' => $_POST[ "email" ],
+	'author' => $_POST[ "author" ],
 	'json' => $_POST[ "json" ]
 );
 $db->query_insert( "flowers", $values );
@@ -29,6 +23,7 @@ $data = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $_POST[ "th
 fwrite( $thumb, $data );
 fclose( $thumb );
 
+jQuery::addMessage( "", "flowerSaved" );
 jQuery::getResponse();
 
 ?>

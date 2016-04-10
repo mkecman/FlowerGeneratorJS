@@ -9,8 +9,19 @@ class MySQLSimple
 	var $errno = 0;
 	var $query_id = 0;
 	
-	function __construct($host, $user, $pass, $database) 
+	function __construct() 
 	{
+		/*
+		$host = "127.0.0.1";
+		$user = "root";
+		$pass = "";
+		$database = "flower";
+		/**/
+		$host = "localhost";
+		$user = "markokec_flower";
+		$pass = "Ayahuasca2016";
+		$database = "markokec_flower";
+		/**/
 		$this->db = new mysqli( "p:" . $host, $user, $pass, $database); // p: is for creating persistent connection
 		//$this->db = new mysqli( $host, $user, $pass, $database );
 		if ($this->db->connect_error) 

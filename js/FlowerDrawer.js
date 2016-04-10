@@ -85,11 +85,7 @@ FlowerDrawer.prototype.checkIfExist = function( x, y, range )
 FlowerDrawer.prototype.draw = function( element ) 
 {
 	if( this.model.clear )
-	{
 		this.clear();
-		this.ctx.fillStyle = this.model.bg_color;
-		this.ctx.fillRect( 0, 0, this.width, this.height );
-	}
 
 	element.updateCanvas();
 	this.mainElement = element;
@@ -120,7 +116,8 @@ FlowerDrawer.prototype.drawElement = function()
 
 FlowerDrawer.prototype.clear = function() 
 {
-	this.ctx.clearRect( 0, 0, this.width, this.height );
+	this.ctx.fillStyle = this.model.bg_color;
+	this.ctx.fillRect( 0, 0, this.width, this.height );
 };
 
 FlowerDrawer.prototype.maximizeCanvas = function() 

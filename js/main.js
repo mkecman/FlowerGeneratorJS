@@ -15,15 +15,34 @@ var flowerModel =
 var elementPolygon;
 var elementCircle;
 var thumbnailer;
+var gallery;
+var flowers;
 
-php.complete = function(XMLHttpRequest, textStatus) 
+php.messages.statsSaved = function (msg, params)
+{
+	loadGallery( $('#order-dropdown').val() );
+}
+
+php.messages.galleryData = function (msg, params)
+{
+	flowers = JSON.parse( msg );
+	gallery.draw( flowers );
+}
+
+php.messages.flowerSaved = function (msg, params)
 {
 	$('#flower-name').val("");
 	$('#save-button').html("SAVED!");
+	loadGallery( $('#order-dropdown').val() );
+}
+
+php.complete = function(XMLHttpRequest, textStatus) 
+{
+	
 };
 php.error = function(xmlEr, typeEr, except) 
 {
-	alert(xmlEr);
+	console.log(xmlEr);
 };
 
 window.onload = function()
@@ -34,9 +53,12 @@ window.onload = function()
 	elementPolygon = new ElementPolygon( flowerModel );
 
 	thumbnailer = new CanvasThumbnail();
+	gallery = new FlowerGallery( "gallery-wrapper" );
 
 	flower = new FlowerDrawer( document.getElementById( "flower-canvas" ), flowerModel );
 	drawFlower();
+
+	loadGallery( $('#order-dropdown').val() );
 };
 
 function drawFlower() 
@@ -51,6 +73,57 @@ function drawFlower()
 	//var t0 = performance.now();
 	//var t1 = performance.now();
 	//return (t1 - t0).toFixed(2);
+}
+
+function likeFlower( id ) 
+{
+	updateFlowerStats( id, "likes" );
+}
+
+function openFlower( id ) 
+{
+	var currentFlower;
+	for (var i = 0; i < flowers.length; i++) 
+	{
+		if( flowers[ i ].id == id )
+		{
+			currentFlower = flowers[ i ];
+			break;
+		}
+	}
+	if( currentFlower != undefined )
+	{
+		updateFlowerStats( id, "views" );
+		flower.clear();
+		updateFlowerModel( currentFlower.json );
+		drawFlower();
+	}
+	else
+		alert("Ooouuups! Couldn't find this flower...");
+
+}
+
+function updateFlowerStats( id, stat ) 
+{
+	var values = 
+	[
+		{ name:"id", value:id },
+		{ name:"stat", value:stat }
+	];
+	$.php('php/SaveFlowerStats.php', values );
+}
+
+function updateFlowerModel( json ) 
+{
+	var model = JSON.parse( json );
+	
+	updateUI( model );
+	
+	for (var prop in model) 
+	{
+		if(!model.hasOwnProperty(prop)) continue;
+		flowerModel[ prop ] = model[ prop ];
+	}
 }
 
 function handleFormSubmit() 
@@ -76,8 +149,18 @@ function handleNameChange()
 		$('#save-button').html("SAVE");
 }
 
+function handleOrderChange() 
+{
+	loadGallery( $('#order-dropdown').val() );
+}
+
 function handleResize() 
 {
 	flower.maximizeCanvas();
 	drawFlower();
+}
+
+function loadGallery( order ) 
+{
+	$.php('php/Gallery.php', [ { name:"order", value:order } ] );
 }

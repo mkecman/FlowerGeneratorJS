@@ -9,8 +9,8 @@ DROP TABLE IF EXISTS `flowers`;
 CREATE TABLE `flowers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `created_ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `author` varchar(255) NOT NULL,
+  `created_ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `json` text NOT NULL,
   `likes` int(11) NOT NULL,
   `views` int(11) NOT NULL,
@@ -18,4 +18,4 @@ CREATE TABLE `flowers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
--- 2016-04-09 00:41:50
+-- 2016-04-10 14:49:08

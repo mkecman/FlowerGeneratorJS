@@ -2,16 +2,17 @@ function uiSetup()
 {
 	uiSetupColorPickers();
 	uiSetupSliders();
+	//$('.scrollbar-inner').scrollbar();
 }
 
 function uiSetupSliders() 
 {
-	setupSlider( "sliderSizeLabel", 	"size", 	1, 200, 	flowerModel.size );
-	setupSlider( "sliderDistanceLabel", "distance", 1, 200, 	flowerModel.distance );
-	setupSlider( "sliderPolygonsLabel", "polygons", 2, 10, 		flowerModel.polygons );
-	setupSlider( "sliderSidesLabel", 	"sides", 	1, 12, 		flowerModel.sides );
-	setupSlider( "sliderWavesLabel", 	"waves", 	1, 7, 		flowerModel.waves );
-	setupSlider( "sliderRotationLabel", "rotation", 0, Math.PI, flowerModel.rotation, 0.02 );
+	setupSlider( "size", 	1, 200, 	flowerModel.size );
+	setupSlider( "distance", 1, 200, 	flowerModel.distance );
+	setupSlider( "polygons", 2, 10, 		flowerModel.polygons );
+	setupSlider( "sides", 	1, 12, 		flowerModel.sides );
+	setupSlider( "waves", 	1, 7, 		flowerModel.waves );
+	setupSlider( "rotation", 0, Math.PI, flowerModel.rotation, 0.02 );
 }
 
 var lineColor = "";
@@ -56,9 +57,45 @@ function setupCPs( amount )
 	}
 }
 
+function updateCPs( amount, model ) 
+{
+	for (var i = 0; i < amount; i++) 
+	{
+		$('#waveCP'+i ).val( model.colors[ i ] );
+		$('#waveCP'+i ).css( 'backgroundColor', model.colors[ i ] );
+	}
+}
+
 function setupColorPicker( wave ) 
 {
 	var tempHtml = '<label>#1 Wave Color:</label><input id="waveCP" value="" />';
+}
+
+function updateUI( model ) 
+{
+	for ( var prop in model ) 
+	{
+		if(!model.hasOwnProperty(prop)) continue;
+		if( $('#slider'+ prop).length )
+		{
+			$('#slider'+ prop).slider( 'value', model[ prop ] );
+			$( "#"+prop+"Label" ).text( prop + ": " + model[ prop ] );
+		}
+	}
+	
+	$('#backgroundColorPicker').val( model.bg_color );
+	$('#backgroundColorPicker').css( 'backgroundColor', model.bg_color );
+	updateCPs( 7, model );
+
+	if( model.fill )
+		$('#fill').prop( 'checked', true );
+	else
+		$('#fill').prop( 'checked', false );
+
+	if( model.clear )
+		$('#clear').prop( 'checked', true );
+	else
+		$('#clear').prop( 'checked', false );
 }
 
 var toolbarActive = true;
@@ -93,16 +130,15 @@ function uiToggleClear()
 	else 
 		flowerModel.clear = false;
 
-	_logm( $('#clear').prop('checked'), flowerModel.clear )
 	drawFlower();
 }
 
-function setupSlider( label, property, min, max, value, step ) 
+function setupSlider( property, min, max, value, step ) 
 {
 	if( step == undefined )
 		step = 1;
 
-	var labelObj = $( "#"+label );
+	var labelObj = $( "#"+property+"Label" );
 	var slider = $( "<div id='slider"+ property +"'></div>" ).insertAfter( labelObj ).slider(
 	{
 		min: min,

@@ -4,6 +4,70 @@
 		"selected_items":
 		[
 			[
+				"ga",
+				"galleryData"
+			],
+			[
+				"Flowe",
+				"FlowerGallery	(index.php)"
+			],
+			[
+				"Flo",
+				"FlowerGallery"
+			],
+			[
+				"hei",
+				"min-height"
+			],
+			[
+				"like",
+				"likeFlower	(index.php)"
+			],
+			[
+				"ver",
+				"vertical-align"
+			],
+			[
+				"line",
+				"line-height"
+			],
+			[
+				"mysql_re",
+				"mysql_real_escape_string"
+			],
+			[
+				"tar",
+				"targetScale"
+			],
+			[
+				"canva",
+				"canvas50	CanvasThumbnail.js"
+			],
+			[
+				"canvas",
+				"canvas"
+			],
+			[
+				"new",
+				"newCanvas"
+			],
+			[
+				"can",
+				"canvasFinal"
+			],
+			[
+				"scale",
+				"scaleDownHalf( originalCanvas )	CanvasThumbnail.js"
+			],
+			[
+				"getCon",
+				"getContext	(Element.js)"
+			],
+			[
+				"make",
+				"make( originalCanvas, newWidth )	canvasthumbnail.js"
+			],
+			[
 				"origi",
 				"originalCanvas	CanvasThumbnail.js"
 			],
@@ -163,8 +227,38 @@
 			"file": "index.php",
 			"settings":
 			{
-				"buffer_size": 4029,
+				"buffer_size": 4383,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/FlowerGallery.js",
+			"settings":
+			{
+				"buffer_size": 964,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "<!DOCTYPE html>\n<html>\n    <head>\n        <title>jQuery Scrollbar Demo</title>\n        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n        <link rel=\"stylesheet\" href=\"../includes/style.css\" />\n        <link rel=\"stylesheet\" href=\"../includes/prettify/prettify.css\" />\n\n        <script src=\"../includes/prettify/prettify.js\"></script>\n        <script src=\"../includes/jquery.js\"></script>\n        <script src=\"../jquery.scrollbar.js\"></script>\n        <script>\n            jQuery(function($){\n\n                function getAlignedText(text){\n                    text = text.split('\\n');\n                    while(text.length > 0 && $.trim(text[0]) == ''){\n                        text.shift();\n                    }\n                    var tabs = (text[0] || '').replace(/^(\\s+).+$/, '$1');\n                    for(var i=0; i<text.length; i++){\n                        text[i] = text[i].replace(tabs, '');\n                    }\n                    if(text.length > 0 && text[text.length - 1].match(/^\\s*$/)){\n                        text.pop();\n                    }\n                    return text.join('\\n');\n                }\n\n                $('.container').each(function(){\n\n                    var content =  $(this).find('.content');\n                    var controls = $(this).find('.controls');\n\n                    $('<pre></pre>').addClass('prettyprint linenums lang-html').text(getAlignedText(content.find('.demo').html())).appendTo(content.find('.html'));\n                    $('<pre></pre>').addClass('prettyprint linenums lang-css').text(getAlignedText($('#css-common').html()) + \"\\n\" + getAlignedText(content.find('style').html())).appendTo(content.find('.css'));\n                    $('<pre></pre>').addClass('prettyprint linenums lang-js').text(getAlignedText(content.find('script').html())).appendTo(content.find('.js'));\n\n                    controls.on('click', 'span', function(){\n                        content.find('.' + $(this).removeClass('active').attr('class')).show().siblings('div').hide();\n                        $(this).addClass('active').siblings('span').removeClass('active');\n                    });\n                    controls.find('.demo').click();\n                });\n\n                $('.container').on('click', '.add-content', function(){\n                    $('#lorem-ipsum').clone().removeAttr('id').appendTo($(this).closest('.container').find('.scroll-content'));\n                    return false;\n                });\n                $('.container').on('click', '.remove-content', function(){\n                    $(this).closest('.container').find('.scroll-content').find('p').not('.permanent').last().remove();\n                    return false;\n                });\n\n                window.prettyPrint && prettyPrint();\n                $('.wrapper').scrollbar();\n            });\n        </script>\n\n        <script type=\"text/javascript\">\n            if(window.location.href.match(/gromo.github.io/i)){\n                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){\n                        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),\n                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)\n                })(window,document,'script','//www.google-analytics.com/analytics.js','ga');\n\n                ga('create', 'UA-52878040-1', 'auto');\n                ga('send', 'pageview');\n            }\n        </script>\n\n        <style type=\"text/css\" id=\"css-common\">\n            /*************** SCROLLBAR BASE CSS ***************/\n\n            .scroll-wrapper {\n                overflow: hidden !important;\n                padding: 0 !important;\n                position: relative;\n            }\n\n            .scroll-wrapper > .scroll-content {\n                border: none !important;\n                box-sizing: content-box !important;\n                height: auto;\n                left: 0;\n                margin: 0;\n                max-height: none;\n                max-width: none !important;\n                overflow: scroll !important;\n                padding: 0;\n                position: relative !important;\n                top: 0;\n                width: auto !important;\n            }\n\n            .scroll-wrapper > .scroll-content::-webkit-scrollbar {\n                height: 0;\n                width: 0;\n            }\n\n            .scroll-element {\n                display: none;\n            }\n            .scroll-element, .scroll-element div {\n                box-sizing: content-box;\n            }\n\n            .scroll-element.scroll-x.scroll-scrollx_visible,\n            .scroll-element.scroll-y.scroll-scrolly_visible {\n                display: block;\n            }\n\n            .scroll-element .scroll-bar,\n            .scroll-element .scroll-arrow {\n                cursor: default;\n            }\n\n            .scroll-textarea {\n                border: 1px solid #cccccc;\n                border-top-color: #999999;\n            }\n            .scroll-textarea > .scroll-content {\n                overflow: hidden !important;\n            }\n            .scroll-textarea > .scroll-content > textarea {\n                border: none !important;\n                box-sizing: border-box;\n                height: 100% !important;\n                margin: 0;\n                max-height: none !important;\n                max-width: none !important;\n                overflow: scroll !important;\n                outline: none;\n                padding: 2px;\n                position: relative !important;\n                top: 0;\n                width: 100% !important;\n            }\n            .scroll-textarea > .scroll-content > textarea::-webkit-scrollbar {\n                height: 0;\n                width: 0;\n            }\n\n\n\n\n        </style>\n    </head>\n    <body>\n        <div class=\"wrapper scrollbar-dynamic\">\n            <div class=\"page-content\">\n\n                <h1>Basic Scrollbars</h1>\n                <p style=\"font-style:italic;\">Resize window to 600px width to see horizontal scrollbar</p>\n\n                <a href=\"advanced.html\">Advanced Scrollbars Demo</a><br/>\n                <a href=\"angular.html\">jQuery Scrollbars as Angular.JS directive</a><br/>\n                <a href=\"../\">&laquo; Back to home</a>\n\n                <p id=\"lorem-ipsum\">\n                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,\n                    scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.\n                    Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel\n                    hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,\n                    pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam\n                    sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,\n                    ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget\n                    nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam\n                    viverra nisi, in interdum massa nibh nec erat.\n                </p>\n\n                <div class=\"container\">\n                    <h2>Simple Inner</h2>\n                    <div class=\"controls\">\n                        <span class=\"demo\">DEMO</span>\n                        <span class=\"html\">HTML</span>\n                        <span class=\"css\">CSS</span>\n                        <span class=\"js\">JS</span>\n                        <button class=\"add-content\">Add Content</button>\n                        <button class=\"remove-content\">Remove Content</button>\n                    </div>\n                    <div class=\"content\">\n                        <style type=\"text/css\">\n\n                            /*************** SIMPLE INNER SCROLLBAR ***************/\n\n                            .scrollbar-inner > .scroll-element,\n                            .scrollbar-inner > .scroll-element div\n                            {\n                                border: none;\n                                margin: 0;\n                                padding: 0;\n                                position: absolute;\n                                z-index: 10;\n                            }\n\n                            .scrollbar-inner > .scroll-element div {\n                                display: block;\n                                height: 100%;\n                                left: 0;\n                                top: 0;\n                                width: 100%;\n                            }\n\n                            .scrollbar-inner > .scroll-element.scroll-x {\n                                bottom: 2px;\n                                height: 8px;\n                                left: 0;\n                                width: 100%;\n                            }\n\n                            .scrollbar-inner > .scroll-element.scroll-y {\n                                height: 100%;\n                                right: 2px;\n                                top: 0;\n                                width: 8px;\n                            }\n\n                            .scrollbar-inner > .scroll-element .scroll-element_outer {\n                                overflow: hidden;\n                            }\n\n                            .scrollbar-inner > .scroll-element .scroll-element_outer,\n                            .scrollbar-inner > .scroll-element .scroll-element_track,\n                            .scrollbar-inner > .scroll-element .scroll-bar {\n                                -webkit-border-radius: 8px;\n                                -moz-border-radius: 8px;\n                                border-radius: 8px;\n                            }\n\n                            .scrollbar-inner > .scroll-element .scroll-element_track,\n                            .scrollbar-inner > .scroll-element .scroll-bar {\n                                -ms-filter:\"progid:DXImageTransform.Microsoft.Alpha(Opacity=40)\";\n                                filter: alpha(opacity=40);\n                                opacity: 0.4;\n                            }\n\n                            .scrollbar-inner > .scroll-element .scroll-element_track { background-color: #e0e0e0; }\n                            .scrollbar-inner > .scroll-element .scroll-bar { background-color: #c2c2c2; }\n                            .scrollbar-inner > .scroll-element:hover .scroll-bar { background-color: #919191; }\n                            .scrollbar-inner > .scroll-element.scroll-draggable .scroll-bar { background-color: #919191; }\n\n\n                            /* update scrollbar offset if both scrolls are visible */\n\n                            .scrollbar-inner > .scroll-element.scroll-x.scroll-scrolly_visible .scroll-element_track { left: -12px; }\n                            .scrollbar-inner > .scroll-element.scroll-y.scroll-scrollx_visible .scroll-element_track { top: -12px; }\n\n\n                            .scrollbar-inner > .scroll-element.scroll-x.scroll-scrolly_visible .scroll-element_size { left: -12px; }\n                            .scrollbar-inner > .scroll-element.scroll-y.scroll-scrollx_visible .scroll-element_size { top: -12px; }\n\n                        </style>\n                        <script type=\"text/javascript\">\n                            jQuery(document).ready(function(){\n                                jQuery('.scrollbar-inner').scrollbar();\n                            });\n                        </script>\n                        <div class=\"demo\">\n                            <div class=\"scrollbar-inner\">\n                                <p class=\"permanent\">\n                                    Simple inner scrollbar over content\n                                </p>\n                                <p class=\"permanent\">\n                                    <a href=\"#anchor\">Click to test #anchors</a><br/><br/>\n                                    <input type=\"text\" value=\"Use TAB to focus next input\" style=\"max-width:220px; width: 100%;\">\n                                </p>\n                                <p>\n                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,\n                                    scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.\n                                    Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel\n                                    hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,\n                                    pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam\n                                    sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,\n                                    ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget\n                                    nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam\n                                    viverra nisi, in interdum massa nibh nec erat.\n                                </p>\n                                <p>\n                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,\n                                    scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.\n                                    Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel\n                                    hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,\n                                    pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam\n                                    sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,\n                                    ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget\n                                    nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam\n                                    viverra nisi, in interdum massa nibh nec erat.\n                                </p>\n                                <p>\n                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,\n                                    scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.\n                                    Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel\n                                    hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,\n                                    pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam\n                                    sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,\n                                    ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget\n                                    nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam\n                                    viverra nisi, in interdum massa nibh nec erat.\n                                </p>\n                                <input type=\"text\"><br/>\n                                <h3 id=\"anchor\">Anchor</h3>\n                            </div>\n                        </div>\n                        <div class=\"html\"></div>\n                        <div class=\"css\"></div>\n                        <div class=\"js\"></div>\n                    </div>\n                </div>\n\n                <div class=\"container\">\n                    <h2>Simple Outer</h2>\n                    <div class=\"controls\">\n                        <span class=\"demo\">DEMO</span>\n                        <span class=\"html\">HTML</span>\n                        <span class=\"css\">CSS</span>\n                        <span class=\"js\">JS</span>\n                        <button class=\"add-content\">Add Content</button>\n                        <button class=\"remove-content\">Remove Content</button>\n                    </div>\n                    <div class=\"content\">\n                        <style type=\"text/css\">\n\n                            /*************** SIMPLE OUTER SCROLLBAR ***************/\n\n                            .scrollbar-outer > .scroll-element,\n                            .scrollbar-outer > .scroll-element div\n                            {\n                                border: none;\n                                margin: 0;\n                                padding: 0;\n                                position: absolute;\n                                z-index: 10;\n                            }\n\n                            .scrollbar-outer > .scroll-element {\n                                background-color: #ffffff;\n                            }\n\n                            .scrollbar-outer > .scroll-element div {\n                                display: block;\n                                height: 100%;\n                                left: 0;\n                                top: 0;\n                                width: 100%;\n                            }\n\n                            .scrollbar-outer > .scroll-element.scroll-x {\n                                bottom: 0;\n                                height: 12px;\n                                left: 0;\n                                width: 100%;\n                            }\n\n                            .scrollbar-outer > .scroll-element.scroll-y {\n                                height: 100%;\n                                right: 0;\n                                top: 0;\n                                width: 12px;\n                            }\n\n                            .scrollbar-outer > .scroll-element.scroll-x .scroll-element_outer { height: 8px; top: 2px; }\n                            .scrollbar-outer > .scroll-element.scroll-y .scroll-element_outer { left: 2px; width: 8px; }\n\n                            .scrollbar-outer > .scroll-element .scroll-element_outer { overflow: hidden; }\n                            .scrollbar-outer > .scroll-element .scroll-element_track { background-color: #eeeeee; }\n\n                            .scrollbar-outer > .scroll-element .scroll-element_outer,\n                            .scrollbar-outer > .scroll-element .scroll-element_track,\n                            .scrollbar-outer > .scroll-element .scroll-bar {\n                                -webkit-border-radius: 8px;\n                                -moz-border-radius: 8px;\n                                border-radius: 8px;\n                            }\n\n                            .scrollbar-outer > .scroll-element .scroll-bar { background-color: #d9d9d9; }\n                            .scrollbar-outer > .scroll-element .scroll-bar:hover { background-color: #c2c2c2; }\n                            .scrollbar-outer > .scroll-element.scroll-draggable .scroll-bar { background-color: #919191; }\n\n\n                            /* scrollbar height/width & offset from container borders */\n\n                            .scrollbar-outer > .scroll-content.scroll-scrolly_visible { left: -12px; margin-left: 12px; }\n                            .scrollbar-outer > .scroll-content.scroll-scrollx_visible { top:  -12px; margin-top:  12px; }\n\n                            .scrollbar-outer > .scroll-element.scroll-x .scroll-bar { min-width: 10px; }\n                            .scrollbar-outer > .scroll-element.scroll-y .scroll-bar { min-height: 10px; }\n\n\n                            /* update scrollbar offset if both scrolls are visible */\n\n                            .scrollbar-outer > .scroll-element.scroll-x.scroll-scrolly_visible .scroll-element_track { left: -14px; }\n                            .scrollbar-outer > .scroll-element.scroll-y.scroll-scrollx_visible .scroll-element_track { top: -14px; }\n\n                            .scrollbar-outer > .scroll-element.scroll-x.scroll-scrolly_visible .scroll-element_size { left: -14px; }\n                            .scrollbar-outer > .scroll-element.scroll-y.scroll-scrollx_visible .scroll-element_size { top: -14px; }\n\n                        </style>\n                        <script type=\"text/javascript\">\n                            jQuery(document).ready(function(){\n                                jQuery('.scrollbar-outer').scrollbar();\n                            });\n                        </script>\n                        <div class=\"demo\">\n                            <div class=\"scrollbar-outer\">\n                                <p class=\"permanent\">\n                                    Simple outer scrollbar can be used as CSS base for custom outer scrollbars.\n                                    This example shows nested scrollbars functionality: nested scrollbar styles do not\n                                    interfere with parent scrollbar styles, i.e. different scrollbars can be safely used\n                                    inside each other.\n                                </p>\n                                <div class=\"inner-content scrollbar-dynamic\">\n                                    <div style=\"padding: 10px;\">\n                                        <h4>\n                                            This container is an example of nested Dynamic scrollbar with padding.\n                                        </h4>\n                                        <p>\n                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,\n                                            scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.\n                                            Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel\n                                            hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,\n                                            pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam\n                                            sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,\n                                            ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget\n                                            nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam\n                                            viverra nisi, in interdum massa nibh nec erat.\n                                        </p>\n                                    </div>\n                                </div>\n                                <p>\n                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,\n                                    scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.\n                                    Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel\n                                    hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,\n                                    pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam\n                                    sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,\n                                    ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget\n                                    nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam\n                                    viverra nisi, in interdum massa nibh nec erat.\n                                </p>\n                                <p>\n                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,\n                                    scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.\n                                    Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel\n                                    hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,\n                                    pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam\n                                    sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,\n                                    ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget\n                                    nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam\n                                    viverra nisi, in interdum massa nibh nec erat.\n                                </p>\n                                <p>\n                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,\n                                    scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.\n                                    Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel\n                                    hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,\n                                    pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam\n                                    sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,\n                                    ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget\n                                    nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam\n                                    viverra nisi, in interdum massa nibh nec erat.\n                                </p>\n                            </div>\n                        </div>\n                        <div class=\"html\"></div>\n                        <div class=\"css\"></div>\n                        <div class=\"js\"></div>\n                    </div>\n                </div>\n\n                <div class=\"container\">\n                    <h2>Mac OS X Lion</h2>\n                    <div class=\"controls\">\n                        <span class=\"demo\">DEMO</span>\n                        <span class=\"html\">HTML</span>\n                        <span class=\"css\">CSS</span>\n                        <span class=\"js\">JS</span>\n                        <button class=\"add-content\">Add Content</button>\n                        <button class=\"remove-content\">Remove Content</button>\n                    </div>\n                    <div class=\"content\">\n                        <style type=\"text/css\">\n\n                            /*************** SCROLLBAR MAC OS X ***************/\n\n                            .scrollbar-macosx > .scroll-element,\n                            .scrollbar-macosx > .scroll-element div\n                            {\n                                background: none;\n                                border: none;\n                                margin: 0;\n                                padding: 0;\n                                position: absolute;\n                                z-index: 10;\n                            }\n\n                            .scrollbar-macosx > .scroll-element div {\n                                display: block;\n                                height: 100%;\n                                left: 0;\n                                top: 0;\n                                width: 100%;\n                            }\n\n                            .scrollbar-macosx > .scroll-element .scroll-element_track { display: none; }\n                            .scrollbar-macosx > .scroll-element .scroll-bar {\n                                background-color: #6C6E71;\n                                display: block;\n\n                                -ms-filter:\"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)\";\n                                filter: alpha(opacity=0);\n                                opacity: 0;\n\n                                -webkit-border-radius: 7px;\n                                -moz-border-radius: 7px;\n                                border-radius: 7px;\n\n                                -webkit-transition: opacity 0.2s linear;\n                                -moz-transition: opacity 0.2s linear;\n                                -o-transition: opacity 0.2s linear;\n                                -ms-transition: opacity 0.2s linear;\n                                transition: opacity 0.2s linear;\n                            }\n                            .scrollbar-macosx:hover > .scroll-element .scroll-bar,\n                            .scrollbar-macosx > .scroll-element.scroll-draggable .scroll-bar {\n                                -ms-filter:\"progid:DXImageTransform.Microsoft.Alpha(Opacity=70)\";\n                                filter: alpha(opacity=70);\n                                opacity: 0.7;\n                            }\n\n\n                            .scrollbar-macosx > .scroll-element.scroll-x {\n                                bottom: 0px;\n                                height: 0px;\n                                left: 0;\n                                min-width: 100%;\n                                overflow: visible;\n                                width: 100%;\n                            }\n\n                            .scrollbar-macosx > .scroll-element.scroll-y {\n                                height: 100%;\n                                min-height: 100%;\n                                right: 0px;\n                                top: 0;\n                                width: 0px;\n                            }\n\n                            /* scrollbar height/width & offset from container borders */\n                            .scrollbar-macosx > .scroll-element.scroll-x .scroll-bar { height: 7px; min-width: 10px; top: -9px; }\n                            .scrollbar-macosx > .scroll-element.scroll-y .scroll-bar { left: -9px; min-height: 10px; width: 7px; }\n\n                            .scrollbar-macosx > .scroll-element.scroll-x .scroll-element_outer { left: 2px; }\n                            .scrollbar-macosx > .scroll-element.scroll-x .scroll-element_size { left: -4px; }\n\n                            .scrollbar-macosx > .scroll-element.scroll-y .scroll-element_outer { top: 2px; }\n                            .scrollbar-macosx > .scroll-element.scroll-y .scroll-element_size { top: -4px; }\n\n                            /* update scrollbar offset if both scrolls are visible */\n                            .scrollbar-macosx > .scroll-element.scroll-x.scroll-scrolly_visible .scroll-element_size { left: -11px; }\n                            .scrollbar-macosx > .scroll-element.scroll-y.scroll-scrollx_visible .scroll-element_size { top: -11px; }\n\n                        </style>\n                        <script type=\"text/javascript\">\n                            jQuery(document).ready(function(){\n                                jQuery('.scrollbar-macosx').scrollbar();\n                            });\n                        </script>\n                        <div class=\"demo\">\n                            <div class=\"scrollbar-macosx\">\n                                <p class=\"permanent\">\n                                    Traditionally scrollbars are permanently displayed whenever an area of a webpage is\n                                    scrollable. By contrast, scrollbars in OSX Lion are hidden from sight, and revealed only\n                                    when scrolling content. In this example, scrollbars are revealed when mouse is over content.\n                                </p>\n                                <p>\n                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,\n                                    scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.\n                                    Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel\n                                    hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,\n                                    pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam\n                                    sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,\n                                    ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget\n                                    nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam\n                                    viverra nisi, in interdum massa nibh nec erat.\n                                </p>\n                                <p>\n                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,\n                                    scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.\n                                    Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel\n                                    hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,\n                                    pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam\n                                    sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,\n                                    ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget\n                                    nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam\n                                    viverra nisi, in interdum massa nibh nec erat.\n                                </p>\n                                <p>\n                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,\n                                    scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.\n                                    Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel\n                                    hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,\n                                    pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam\n                                    sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,\n                                    ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget\n                                    nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam\n                                    viverra nisi, in interdum massa nibh nec erat.\n                                </p>\n                            </div>\n                        </div>\n                        <div class=\"html\"></div>\n                        <div class=\"css\"></div>\n                        <div class=\"js\"></div>\n                    </div>\n                </div>\n\n                <div class=\"container\">\n                    <h2>Light</h2>\n                    <div class=\"controls\">\n                        <span class=\"demo\">DEMO</span>\n                        <span class=\"html\">HTML</span>\n                        <span class=\"css\">CSS</span>\n                        <span class=\"js\">JS</span>\n                        <button class=\"add-content\">Add Content</button>\n                        <button class=\"remove-content\">Remove Content</button>\n                    </div>\n                    <div class=\"content\">\n                        <style type=\"text/css\">\n\n                            /*************** SCROLLBAR LIGHT ***************/\n\n                            .scrollbar-light > .scroll-element,\n                            .scrollbar-light > .scroll-element div {\n                                border: none;\n                                margin: 0;\n                                overflow: hidden;\n                                padding: 0;\n                                position: absolute;\n                                z-index: 10;\n                            }\n\n                            .scrollbar-light > .scroll-element {\n                                background-color: #ffffff;\n                            }\n\n                            .scrollbar-light > .scroll-element div {\n                                display: block;\n                                height: 100%;\n                                left: 0;\n                                top: 0;\n                                width: 100%;\n                            }\n\n                            .scrollbar-light > .scroll-element .scroll-element_outer {\n                                -webkit-border-radius: 10px;\n                                -moz-border-radius: 10px;\n                                border-radius: 10px;\n                            }\n\n                            .scrollbar-light > .scroll-element .scroll-element_size {\n                                background: #dbdbdb;\n                                background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi\n                                8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2\n                                VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaW\n                                VudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2\n                                Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2RiZGJkYiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMC\n                                UiIHN0b3AtY29sb3I9IiNlOGU4ZTgiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD\n                                0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdm\n                                c+);\n                                background: -moz-linear-gradient(left, #dbdbdb 0%, #e8e8e8 100%);\n                                background: -webkit-gradient(linear, left top, right top, color-stop(0%,#dbdbdb), color-stop(100%,#e8e8e8));\n                                background: -webkit-linear-gradient(left, #dbdbdb 0%,#e8e8e8 100%);\n                                background: -o-linear-gradient(left, #dbdbdb 0%,#e8e8e8 100%);\n                                background: -ms-linear-gradient(left, #dbdbdb 0%,#e8e8e8 100%);\n                                background: linear-gradient(to right, #dbdbdb 0%,#e8e8e8 100%);\n\n                                -webkit-border-radius: 10px;\n                                -moz-border-radius: 10px;\n                                border-radius: 10px;\n                            }\n\n                            .scrollbar-light > .scroll-element.scroll-x {\n                                bottom: 0;\n                                height: 17px;\n                                left: 0;\n                                min-width: 100%;\n                                width: 100%;\n                            }\n\n                            .scrollbar-light > .scroll-element.scroll-y {\n                                height: 100%;\n                                min-height: 100%;\n                                right: 0;\n                                top: 0;\n                                width: 17px;\n                            }\n\n                            .scrollbar-light > .scroll-element .scroll-bar {\n                                background: #fefefe;\n                                background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi\n                                8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2\n                                VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaW\n                                VudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2\n                                Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZlZmVmZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMC\n                                UiIHN0b3AtY29sb3I9IiNmNWY1ZjUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD\n                                0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdm\n                                c+);\n                                background: -moz-linear-gradient(left, #fefefe 0%, #f5f5f5 100%);\n                                background: -webkit-gradient(linear, left top, right top, color-stop(0%,#fefefe), color-stop(100%,#f5f5f5));\n                                background: -webkit-linear-gradient(left, #fefefe 0%,#f5f5f5 100%);\n                                background: -o-linear-gradient(left, #fefefe 0%,#f5f5f5 100%);\n                                background: -ms-linear-gradient(left, #fefefe 0%,#f5f5f5 100%);\n                                background: linear-gradient(to right, #fefefe 0%,#f5f5f5 100%);\n\n                                border: 1px solid #dbdbdb;\n                                -webkit-border-radius: 10px;\n                                -moz-border-radius: 10px;\n                                border-radius: 10px;\n                            }\n\n                            /* scrollbar height/width & offset from container borders */\n\n                            .scrollbar-light > .scroll-content.scroll-scrolly_visible { left: -17px; margin-left: 17px; }\n                            .scrollbar-light > .scroll-content.scroll-scrollx_visible { top:  -17px; margin-top:  17px; }\n\n                            .scrollbar-light > .scroll-element.scroll-x .scroll-bar { height: 10px; min-width: 10px; top: 0px; }\n                            .scrollbar-light > .scroll-element.scroll-y .scroll-bar { left: 0px; min-height: 10px; width: 10px; }\n\n                            .scrollbar-light > .scroll-element.scroll-x .scroll-element_outer { height: 12px; left: 2px; top: 2px; }\n                            .scrollbar-light > .scroll-element.scroll-x .scroll-element_size { left: -4px; }\n\n                            .scrollbar-light > .scroll-element.scroll-y .scroll-element_outer { left: 2px; top: 2px; width: 12px; }\n                            .scrollbar-light > .scroll-element.scroll-y .scroll-element_size { top: -4px; }\n\n                            /* update scrollbar offset if both scrolls are visible */\n\n                            .scrollbar-light > .scroll-element.scroll-x.scroll-scrolly_visible .scroll-element_size { left: -19px; }\n                            .scrollbar-light > .scroll-element.scroll-y.scroll-scrollx_visible .scroll-element_size { top: -19px; }\n\n                            .scrollbar-light > .scroll-element.scroll-x.scroll-scrolly_visible .scroll-element_track { left: -19px; }\n                            .scrollbar-light > .scroll-element.scroll-y.scroll-scrollx_visible .scroll-element_track { top: -19px; }\n\n                        </style>\n                        <script type=\"text/javascript\">\n                            jQuery(document).ready(function(){\n                                jQuery('.scrollbar-light').scrollbar();\n                            });\n                        </script>\n                        <div class=\"demo\">\n                            <div class=\"scrollbar-light\">\n                                <input type=\"text\">\n                                <p class=\"permanent\">\n                                    Light version of scrollbar is great for different custom design solutions.\n                                </p>\n                                <p>\n                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,\n                                    scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.\n                                    Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel\n                                    hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,\n                                    pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam\n                                    sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,\n                                    ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget\n                                    nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam\n                                    viverra nisi, in interdum massa nibh nec erat.\n                                </p>\n                                <p>\n                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,\n                                    scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.\n                                    Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel\n                                    hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,\n                                    pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam\n                                    sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,\n                                    ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget\n                                    nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam\n                                    viverra nisi, in interdum massa nibh nec erat.\n                                </p>\n                                <p>\n                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,\n                                    scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.\n                                    Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel\n                                    hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,\n                                    pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam\n                                    sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,\n                                    ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget\n                                    nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam\n                                    viverra nisi, in interdum massa nibh nec erat.\n                                </p>\n                                <input type=\"text\">\n                            </div>\n                        </div>\n                        <div class=\"html\"></div>\n                        <div class=\"css\"></div>\n                        <div class=\"js\"></div>\n                    </div>\n                </div>\n\n                <div class=\"container\">\n                    <h2>Rail</h2>\n                    <div class=\"controls\">\n                        <span class=\"demo\">DEMO</span>\n                        <span class=\"html\">HTML</span>\n                        <span class=\"css\">CSS</span>\n                        <span class=\"js\">JS</span>\n                        <button class=\"add-content\">Add Content</button>\n                        <button class=\"remove-content\">Remove Content</button>\n                    </div>\n                    <div class=\"content\">\n                        <style type=\"text/css\">\n\n                            /*************** SCROLLBAR RAIL ***************/\n\n                            .scrollbar-rail > .scroll-element,\n                            .scrollbar-rail > .scroll-element div\n                            {\n                                border: none;\n                                margin: 0;\n                                overflow: hidden;\n                                padding: 0;\n                                position: absolute;\n                                z-index: 10;\n                            }\n\n                            .scrollbar-rail > .scroll-element {\n                                background-color: #ffffff;\n                            }\n\n                            .scrollbar-rail > .scroll-element div {\n                                display: block;\n                                height: 100%;\n                                left: 0;\n                                top: 0;\n                                width: 100%;\n                            }\n\n                            .scrollbar-rail > .scroll-element .scroll-element_size {\n                                background-color: #999;\n                                background-color: rgba(0, 0, 0, 0.3);\n                            }\n\n                            .scrollbar-rail > .scroll-element .scroll-element_outer:hover .scroll-element_size {\n                                background-color: #666;\n                                background-color: rgba(0, 0, 0, 0.5);\n                            }\n\n                            .scrollbar-rail > .scroll-element.scroll-x {\n                                bottom: 0;\n                                height: 12px;\n                                left: 0;\n                                min-width: 100%;\n                                padding: 3px 0 2px;\n                                width: 100%;\n                            }\n\n                            .scrollbar-rail > .scroll-element.scroll-y {\n                                height: 100%;\n                                min-height: 100%;\n                                padding: 0 2px 0 3px;\n                                right: 0;\n                                top: 0;\n                                width: 12px;\n                            }\n\n                            .scrollbar-rail > .scroll-element .scroll-bar {\n                                background-color: #d0b9a0;\n\n                                -webkit-border-radius: 2px;\n                                -moz-border-radius: 2px;\n                                border-radius: 2px;\n\n                                box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);\n                            }\n\n                            .scrollbar-rail > .scroll-element .scroll-element_outer:hover .scroll-bar {\n                                box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);\n                            }\n\n                            /* scrollbar height/width & offset from container borders */\n\n                            .scrollbar-rail > .scroll-content.scroll-scrolly_visible { left: -17px; margin-left: 17px; }\n                            .scrollbar-rail > .scroll-content.scroll-scrollx_visible { margin-top: 17px; top: -17px; }\n\n                            .scrollbar-rail > .scroll-element.scroll-x .scroll-bar { height: 10px; min-width: 10px; top: 1px; }\n                            .scrollbar-rail > .scroll-element.scroll-y .scroll-bar { left: 1px; min-height: 10px; width: 10px; }\n\n                            .scrollbar-rail > .scroll-element.scroll-x .scroll-element_outer { height: 15px; left: 5px; }\n                            .scrollbar-rail > .scroll-element.scroll-x .scroll-element_size { height: 2px; left: -10px; top: 5px; }\n\n                            .scrollbar-rail > .scroll-element.scroll-y .scroll-element_outer { top: 5px; width: 15px; }\n                            .scrollbar-rail > .scroll-element.scroll-y .scroll-element_size { left: 5px; top: -10px; width: 2px; }\n\n                            /* update scrollbar offset if both scrolls are visible */\n\n                            .scrollbar-rail > .scroll-element.scroll-x.scroll-scrolly_visible .scroll-element_size { left: -25px; }\n                            .scrollbar-rail > .scroll-element.scroll-y.scroll-scrollx_visible .scroll-element_size { top: -25px; }\n\n                            .scrollbar-rail > .scroll-element.scroll-x.scroll-scrolly_visible .scroll-element_track { left: -25px; }\n                            .scrollbar-rail > .scroll-element.scroll-y.scroll-scrollx_visible .scroll-element_track { top: -25px; }\n\n                        </style>\n                        <script type=\"text/javascript\">\n                            jQuery(document).ready(function(){\n                                jQuery('.scrollbar-rail').scrollbar();\n                            });\n                        </script>\n                        <div class=\"demo\">\n                            <div class=\"scrollbar-rail\">\n                                <p class=\"permanent\">\n                                    <strong>Scrollbar Rail</strong>\n                                </p>\n                                <p>\n                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,\n                                    scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.\n                                    Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel\n                                    hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,\n                                    pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam\n                                    sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,\n                                    ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget\n                                    nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam\n                                    viverra nisi, in interdum massa nibh nec erat.\n                                </p>\n                                <p>\n                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,\n                                    scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.\n                                    Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel\n                                    hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,\n                                    pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam\n                                    sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,\n                                    ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget\n                                    nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam\n                                    viverra nisi, in interdum massa nibh nec erat.\n                                </p>\n                                <p>\n                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,\n                                    scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.\n                                    Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel\n                                    hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,\n                                    pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam\n                                    sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,\n                                    ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget\n                                    nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam\n                                    viverra nisi, in interdum massa nibh nec erat.\n                                </p>\n                                <p>\n                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,\n                                    scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.\n                                    Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel\n                                    hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,\n                                    pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam\n                                    sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,\n                                    ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget\n                                    nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam\n                                    viverra nisi, in interdum massa nibh nec erat.\n                                </p>\n                            </div>\n                        </div>\n                        <div class=\"html\"></div>\n                        <div class=\"css\"></div>\n                        <div class=\"js\"></div>\n                    </div>\n                </div>\n\n                <div class=\"container\">\n                    <h2>Dynamic</h2>\n                    <div class=\"controls\">\n                        <span class=\"demo\">DEMO</span>\n                        <span class=\"html\">HTML</span>\n                        <span class=\"css\">CSS</span>\n                        <span class=\"js\">JS</span>\n                        <button class=\"add-content\">Add Content</button>\n                        <button class=\"remove-content\">Remove Content</button>\n                    </div>\n                    <div class=\"content\">\n                        <style type=\"text/css\">\n\n                            /*************** SCROLLBAR DYNAMIC ***************/\n\n                            .scrollbar-dynamic > .scroll-element,\n                            .scrollbar-dynamic > .scroll-element div\n                            {\n                                background: none;\n                                border: none;\n                                margin: 0;\n                                padding: 0;\n                                position: absolute;\n                                z-index: 10;\n                            }\n\n                            .scrollbar-dynamic > .scroll-element div {\n                                display: block;\n                                height: 100%;\n                                left: 0;\n                                top: 0;\n                                width: 100%;\n                            }\n\n                            .scrollbar-dynamic > .scroll-element.scroll-x {\n                                bottom: 2px;\n                                height: 7px;\n                                left: 0;\n                                min-width: 100%;\n                                width: 100%;\n                            }\n\n                            .scrollbar-dynamic > .scroll-element.scroll-y {\n                                height: 100%;\n                                min-height: 100%;\n                                right: 2px;\n                                top: 0;\n                                width: 7px;\n                            }\n\n                            .scrollbar-dynamic > .scroll-element .scroll-element_outer {\n                                opacity: 0.3;\n\n                                -webkit-border-radius: 12px;\n                                -moz-border-radius: 12px;\n                                border-radius: 12px;\n                            }\n                            .scrollbar-dynamic > .scroll-element .scroll-element_size {\n                                background-color: #cccccc;\n                                opacity: 0;\n\n                                -webkit-border-radius: 12px;\n                                -moz-border-radius: 12px;\n                                border-radius: 12px;\n\n                                -webkit-transition: opacity 0.2s;\n                                -moz-transition: opacity 0.2s;\n                                -o-transition: opacity 0.2s;\n                                -ms-transition: opacity 0.2s;\n                                transition: opacity 0.2s;\n                            }\n\n                            .scrollbar-dynamic > .scroll-element .scroll-bar {\n                                background-color: #6c6e71;\n\n                                -webkit-border-radius: 7px;\n                                -moz-border-radius: 7px;\n                                border-radius: 7px;\n                            }\n\n                            /* scrollbar height/width & offset from container borders */\n\n                            .scrollbar-dynamic > .scroll-element.scroll-x .scroll-bar {\n                                bottom: 0;\n                                height: 7px;\n                                min-width: 24px;\n                                top: auto;\n                            }\n                            .scrollbar-dynamic > .scroll-element.scroll-y .scroll-bar {\n                                left: auto;\n                                min-height: 24px;\n                                right: 0;\n                                width: 7px;\n                            }\n\n                            .scrollbar-dynamic > .scroll-element.scroll-x .scroll-element_outer {\n                                bottom: 0;\n                                top: auto;\n                                left: 2px;\n\n                                -webkit-transition: height 0.2s;\n                                -moz-transition: height 0.2s;\n                                -o-transition: height 0.2s;\n                                -ms-transition: height 0.2s;\n                                transition: height 0.2s;\n                            }\n\n                            .scrollbar-dynamic > .scroll-element.scroll-y .scroll-element_outer {\n                                left: auto;\n                                right: 0;\n                                top: 2px;\n\n                                -webkit-transition: width 0.2s;\n                                -moz-transition: width 0.2s;\n                                -o-transition: width 0.2s;\n                                -ms-transition: width 0.2s;\n                                transition: width 0.2s;\n                            }\n\n                            .scrollbar-dynamic > .scroll-element.scroll-x .scroll-element_size { left: -4px; }\n                            .scrollbar-dynamic > .scroll-element.scroll-y .scroll-element_size { top: -4px; }\n\n\n                            /* update scrollbar offset if both scrolls are visible */\n\n                            .scrollbar-dynamic > .scroll-element.scroll-x.scroll-scrolly_visible .scroll-element_size { left: -11px; }\n                            .scrollbar-dynamic > .scroll-element.scroll-y.scroll-scrollx_visible .scroll-element_size { top: -11px; }\n\n\n                            /* hover & drag */\n\n                            .scrollbar-dynamic > .scroll-element:hover .scroll-element_outer,\n                            .scrollbar-dynamic > .scroll-element.scroll-draggable .scroll-element_outer {\n                                overflow: hidden;\n\n                                -ms-filter:\"progid:DXImageTransform.Microsoft.Alpha(Opacity=70)\";\n                                filter: alpha(opacity=70);\n                                opacity: 0.7;\n                            }\n                            .scrollbar-dynamic > .scroll-element:hover .scroll-element_outer .scroll-element_size,\n                            .scrollbar-dynamic > .scroll-element.scroll-draggable .scroll-element_outer .scroll-element_size {\n                                opacity: 1;\n                            }\n                            .scrollbar-dynamic > .scroll-element:hover .scroll-element_outer .scroll-bar,\n                            .scrollbar-dynamic > .scroll-element.scroll-draggable .scroll-element_outer .scroll-bar {\n                                height: 100%;\n                                width: 100%;\n\n                                -webkit-border-radius: 12px;\n                                -moz-border-radius: 12px;\n                                border-radius: 12px;\n                            }\n\n                            .scrollbar-dynamic > .scroll-element.scroll-x:hover .scroll-element_outer,\n                            .scrollbar-dynamic > .scroll-element.scroll-x.scroll-draggable .scroll-element_outer {\n                                height: 20px;\n                                min-height: 7px;\n                            }\n                            .scrollbar-dynamic > .scroll-element.scroll-y:hover .scroll-element_outer,\n                            .scrollbar-dynamic > .scroll-element.scroll-y.scroll-draggable .scroll-element_outer {\n                                min-width: 7px;\n                                width: 20px;\n                            }\n\n                        </style>\n                        <script type=\"text/javascript\">\n                            jQuery(document).ready(function(){\n                                jQuery('.scrollbar-dynamic').scrollbar();\n                            });\n                        </script>\n                        <div class=\"demo\">\n                            <div class=\"scrollbar-dynamic\">\n                                <p class=\"permanent\">\n                                    Dynamic scrollbar looks tiny and transparent, and does not interfere with reading content.\n                                    It increases its size when mouse is over, showing also full scroll container.\n                                    Because of bugs with opacity in IE, this scrollbar is not recommended for IE7-8.\n                                </p>\n                                <p>\n                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,\n                                    scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.\n                                    Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel\n                                    hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,\n                                    pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam\n                                    sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,\n                                    ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget\n                                    nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam\n                                    viverra nisi, in interdum massa nibh nec erat.\n                                </p>\n                                <p>\n                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,\n                                    scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.\n                                    Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel\n                                    hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,\n                                    pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam\n                                    sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,\n                                    ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget\n                                    nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam\n                                    viverra nisi, in interdum massa nibh nec erat.\n                                </p>\n                                <p>\n                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,\n                                    scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.\n                                    Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel\n                                    hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,\n                                    pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam\n                                    sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,\n                                    ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget\n                                    nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam\n                                    viverra nisi, in interdum massa nibh nec erat.\n                                </p>\n                                <p>\n                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,\n                                    scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.\n                                    Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel\n                                    hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,\n                                    pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam\n                                    sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,\n                                    ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget\n                                    nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam\n                                    viverra nisi, in interdum massa nibh nec erat.\n                                </p>\n                            </div>\n                        </div>\n                        <div class=\"html\"></div>\n                        <div class=\"css\"></div>\n                        <div class=\"js\"></div>\n                    </div>\n                </div>\n\n                <div class=\"container\">\n                    <h2>Google Chrome</h2>\n                    <div class=\"controls\">\n                        <span class=\"demo\">DEMO</span>\n                        <span class=\"html\">HTML</span>\n                        <span class=\"css\">CSS</span>\n                        <span class=\"js\">JS</span>\n                        <button class=\"add-content\">Add Content</button>\n                        <button class=\"remove-content\">Remove Content</button>\n                    </div>\n                    <div class=\"content\">\n                        <style type=\"text/css\">\n\n                            /*************** SCROLLBAR GOOGLE CHROME ***************/\n\n                            .scrollbar-chrome > .scroll-element,\n                            .scrollbar-chrome > .scroll-element div\n                            {\n                                border: none;\n                                margin: 0;\n                                overflow: hidden;\n                                padding: 0;\n                                position: absolute;\n                                z-index: 10;\n                            }\n\n                            .scrollbar-chrome > .scroll-element {\n                                background-color: #ffffff;\n                            }\n\n                            .scrollbar-chrome > .scroll-element div {\n                                display: block;\n                                height: 100%;\n                                left: 0;\n                                top: 0;\n                                width: 100%;\n                            }\n\n                            .scrollbar-chrome > .scroll-element .scroll-element_outer {}\n\n                            .scrollbar-chrome > .scroll-element .scroll-element_track {\n                                background: #f1f1f1;\n                                border: 1px solid #dbdbdb;\n                            }\n\n                            .scrollbar-chrome > .scroll-element.scroll-x {\n                                bottom: 0;\n                                height: 16px;\n                                left: 0;\n                                min-width: 100%;\n                                width: 100%;\n                            }\n\n                            .scrollbar-chrome > .scroll-element.scroll-y {\n                                height: 100%;\n                                min-height: 100%;\n                                right: 0;\n                                top: 0;\n                                width: 16px;\n                            }\n\n                            .scrollbar-chrome > .scroll-element .scroll-bar {\n                                background-color: #d9d9d9;\n                                border: 1px solid #bdbdbd;\n                                cursor: default;\n\n                                -webkit-border-radius: 2px;\n                                -moz-border-radius: 2px;\n                                border-radius: 2px;\n                            }\n\n                            .scrollbar-chrome > .scroll-element .scroll-bar:hover {\n                                background-color: #c2c2c2;\n                                border-color: #a9a9a9;\n                            }\n\n                            .scrollbar-chrome > .scroll-element.scroll-draggable .scroll-bar {\n                                background-color: #919191;\n                                border-color: #7e7e7e;\n                            }\n\n                            /* scrollbar height/width & offset from container borders */\n\n                            .scrollbar-chrome > .scroll-content.scroll-scrolly_visible { left: -16px; margin-left: 16px; }\n                            .scrollbar-chrome > .scroll-content.scroll-scrollx_visible { top:  -16px; margin-top:  16px; }\n\n                            .scrollbar-chrome > .scroll-element.scroll-x .scroll-bar { height: 8px; min-width: 10px; top: 3px; }\n                            .scrollbar-chrome > .scroll-element.scroll-y .scroll-bar { left: 3px; min-height: 10px; width: 8px; }\n\n                            .scrollbar-chrome > .scroll-element.scroll-x .scroll-element_outer { border-left: 1px solid #dbdbdb; }\n                            .scrollbar-chrome > .scroll-element.scroll-x .scroll-element_track { height: 14px; left: -3px; }\n                            .scrollbar-chrome > .scroll-element.scroll-x .scroll-element_size { height: 14px; left: -4px; }\n\n                            .scrollbar-chrome > .scroll-element.scroll-y .scroll-element_outer { border-top: 1px solid #dbdbdb; }\n                            .scrollbar-chrome > .scroll-element.scroll-y .scroll-element_track { top: -3px; width: 14px; }\n                            .scrollbar-chrome > .scroll-element.scroll-y .scroll-element_size { top: -4px; width: 14px; }\n\n                            /* update scrollbar offset if both scrolls are visible */\n\n                            .scrollbar-chrome > .scroll-element.scroll-x.scroll-scrolly_visible .scroll-element_size { left: -19px; }\n                            .scrollbar-chrome > .scroll-element.scroll-y.scroll-scrollx_visible .scroll-element_size { top: -19px; }\n\n                            .scrollbar-chrome > .scroll-element.scroll-x.scroll-scrolly_visible .scroll-element_track { left: -19px; }\n                            .scrollbar-chrome > .scroll-element.scroll-y.scroll-scrollx_visible .scroll-element_track { top: -19px; }\n\n                        </style>\n                        <script type=\"text/javascript\">\n                            jQuery(document).ready(function(){\n                                jQuery('.scrollbar-chrome').scrollbar();\n                            });\n                        </script>\n                        <div class=\"demo\">\n                            <div class=\"scrollbar-chrome\">\n                                <p class=\"permanent\">\n                                    Google Chrome scrollbar\n                                </p>\n                                <p>\n                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,\n                                    scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.\n                                    Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel\n                                    hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,\n                                    pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam\n                                    sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,\n                                    ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget\n                                    nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam\n                                    viverra nisi, in interdum massa nibh nec erat.\n                                </p>\n                                <p>\n                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,\n                                    scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.\n                                    Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel\n                                    hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,\n                                    pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam\n                                    sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,\n                                    ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget\n                                    nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam\n                                    viverra nisi, in interdum massa nibh nec erat.\n                                </p>\n                                <p>\n                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,\n                                    scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.\n                                    Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel\n                                    hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,\n                                    pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam\n                                    sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,\n                                    ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget\n                                    nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam\n                                    viverra nisi, in interdum massa nibh nec erat.\n                                </p>\n                            </div>\n                        </div>\n                        <div class=\"html\"></div>\n                        <div class=\"css\"></div>\n                        <div class=\"js\"></div>\n                    </div>\n                </div>\n\n                <div class=\"container\">\n                    <h2>Textarea Scrollbar (IE8+)</h2>\n                    <div class=\"controls\">\n                        <span class=\"demo\">DEMO</span>\n                        <span class=\"html\">HTML</span>\n                        <span class=\"css\">CSS</span>\n                        <span class=\"js\">JS</span>\n                    </div>\n                    <div class=\"content\">\n                        <style type=\"text/css\">\n\n                            /*************** TEXTAREA STYLES ***************/\n\n                            .textarea-scrollbar {\n                                height: 250px;\n                                width: 500px;\n                            }\n                        </style>\n                        <script type=\"text/javascript\">\n                            jQuery(document).ready(function(){\n                                jQuery('.textarea-scrollbar').scrollbar();\n                            });\n                        </script>\n                        <div class=\"demo\">\n                            <textarea class=\"textarea-scrollbar scrollbar-outer\">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue, pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare, ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam viverra nisi, in interdum massa nibh nec erat.\n\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue, pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare, ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam viverra nisi, in interdum massa nibh nec erat.</textarea>\n                        </div>\n                        <div class=\"html\"></div>\n                        <div class=\"css\"></div>\n                        <div class=\"js\"></div>\n                    </div>\n                </div>\n\n            </div>\n        </div>\n    </body>\n</html>\n",
+			"file": "/C/Users/Administrator/AppData/Local/Temp/_tc/jquery.scrollbar-gh-pages/demo/basic.html",
+			"file_size": 86303,
+			"file_write_time": 130996542820000000,
+			"settings":
+			{
+				"buffer_size": 86303,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "/*! normalize.css v3.0.0 | MIT License | git.io/normalize */\n\n/**\n * 1. Set default font family to sans-serif.\n * 2. Prevent iOS text size adjust after orientation change, without disabling\n *    user zoom.\n */\nhtml {\n	font-family: sans-serif; /* 1 */\n	-ms-text-size-adjust: 100%; /* 2 */\n	-webkit-text-size-adjust: 100%; /* 2 */\n}\n\n/**\n * Remove default margin.\n */\n\nbody {\n	margin: 0;\n}\n\n/* HTML5 display definitions\n   ========================================================================== */\n\n/**\n * Correct `block` display not defined in IE 8/9.\n */\n\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nhgroup,\nmain,\nnav,\nsection,\nsummary {\n	display: block;\n}\n\n/**\n * 1. Correct `inline-block` display not defined in IE 8/9.\n * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.\n */\n\naudio,\ncanvas,\nprogress,\nvideo {\n	display: inline-block; /* 1 */\n	vertical-align: baseline; /* 2 */\n}\n\n/**\n * Prevent modern browsers from displaying `audio` without controls.\n * Remove excess height in iOS 5 devices.\n */\n\naudio:not([controls]) {\n	display: none;\n	height: 0;\n}\n\n/**\n * Address `[hidden]` styling not present in IE 8/9.\n * Hide the `template` element in IE, Safari, and Firefox < 22.\n */\n\n[hidden],\ntemplate {\n	display: none;\n}\n\n/* Links\n   ========================================================================== */\n\n/**\n * Remove the gray background color from active links in IE 10.\n */\n\na {\n	background: transparent;\n}\n\n/**\n * Improve readability when focused and also mouse hovered in all browsers.\n */\n\na:active,\na:hover {\n	outline: 0;\n}\n\n/* Text-level semantics\n   ========================================================================== */\n\n/**\n * Address styling not present in IE 8/9, Safari 5, and Chrome.\n */\n\nabbr[title] {\n	border-bottom: 1px dotted;\n}\n\n/**\n * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.\n */\n\nb,\nstrong {\n	font-weight: bold;\n}\n\n/**\n * Address styling not present in Safari 5 and Chrome.\n */\n\ndfn {\n	font-style: italic;\n}\n\n/**\n * Address variable `h1` font-size and margin within `section` and `article`\n * contexts in Firefox 4+, Safari 5, and Chrome.\n */\n\nh1 {\n	font-size: 2em;\n	margin: 0.67em 0;\n}\n\n/**\n * Address styling not present in IE 8/9.\n */\n\nmark {\n	background: #ff0;\n	color: #000;\n}\n\n/**\n * Address inconsistent and variable font size in all browsers.\n */\n\nsmall {\n	font-size: 80%;\n}\n\n/**\n * Prevent `sub` and `sup` affecting `line-height` in all browsers.\n */\n\nsub,\nsup {\n	font-size: 75%;\n	line-height: 0;\n	position: relative;\n	vertical-align: baseline;\n}\n\nsup {\n	top: -0.5em;\n}\n\nsub {\n	bottom: -0.25em;\n}\n\n/* Embedded content\n   ========================================================================== */\n\n/**\n * Remove border when inside `a` element in IE 8/9.\n */\n\nimg {\n	border: 0;\n}\n\n/**\n * Correct overflow displayed oddly in IE 9.\n */\n\nsvg:not(:root) {\n	overflow: hidden;\n}\n\n/* Grouping content\n   ========================================================================== */\n\n/**\n * Address margin not present in IE 8/9 and Safari 5.\n */\n\nfigure {\n	margin: 1em 40px;\n}\n\n/**\n * Address differences between Firefox and other browsers.\n */\n\nhr {\n	-moz-box-sizing: content-box;\n	box-sizing: content-box;\n	height: 0;\n}\n\n/**\n * Contain overflow in all browsers.\n */\n\npre {\n	overflow: auto;\n}\n\n/**\n * Address odd `em`-unit font size rendering in all browsers.\n */\n\ncode,\nkbd,\npre,\nsamp {\n	font-family: monospace, monospace;\n	font-size: 1em;\n}\n\n/* Forms\n   ========================================================================== */\n\n/**\n * Known limitation: by default, Chrome and Safari on OS X allow very limited\n * styling of `select`, unless a `border` property is set.\n */\n\n/**\n * 1. Correct color not being inherited.\n *    Known issue: affects color of disabled elements.\n * 2. Correct font properties not being inherited.\n * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.\n */\n\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n	color: inherit; /* 1 */\n	font: inherit; /* 2 */\n	margin: 0; /* 3 */\n}\n\n/**\n * Address `overflow` set to `hidden` in IE 8/9/10.\n */\n\nbutton {\n	overflow: visible;\n}\n\n/**\n * Address inconsistent `text-transform` inheritance for `button` and `select`.\n * All other form control elements do not inherit `text-transform` values.\n * Correct `button` style inheritance in Firefox, IE 8+, and Opera\n * Correct `select` style inheritance in Firefox.\n */\n\nbutton,\nselect {\n	text-transform: none;\n}\n\n/**\n * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`\n *    and `video` controls.\n * 2. Correct inability to style clickable `input` types in iOS.\n * 3. Improve usability and consistency of cursor style between image-type\n *    `input` and others.\n */\n\nbutton,\nhtml input[type=\"button\"], /* 1 */\ninput[type=\"reset\"],\ninput[type=\"submit\"] {\n	-webkit-appearance: button; /* 2 */\n	cursor: pointer; /* 3 */\n}\n\n/**\n * Re-set default cursor for disabled elements.\n */\n\nbutton[disabled],\nhtml input[disabled] {\n	cursor: default;\n}\n\n/**\n * Remove inner padding and border in Firefox 4+.\n */\n\nbutton::-moz-focus-inner,\ninput::-moz-focus-inner {\n	border: 0;\n	padding: 0;\n}\n\n/**\n * Address Firefox 4+ setting `line-height` on `input` using `!important` in\n * the UA stylesheet.\n */\n\ninput {\n	line-height: normal;\n}\n\n/**\n * It's recommended that you don't attempt to style these elements.\n * Firefox's implementation doesn't respect box-sizing, padding, or width.\n *\n * 1. Address box sizing set to `content-box` in IE 8/9/10.\n * 2. Remove excess padding in IE 8/9/10.\n */\n\ninput[type=\"checkbox\"],\ninput[type=\"radio\"] {\n	box-sizing: border-box; /* 1 */\n	padding: 0; /* 2 */\n}\n\n/**\n * Fix the cursor style for Chrome's increment/decrement buttons. For certain\n * `font-size` values of the `input`, it causes the cursor style of the\n * decrement button to change from `default` to `text`.\n */\n\ninput[type=\"number\"]::-webkit-inner-spin-button,\ninput[type=\"number\"]::-webkit-outer-spin-button {\n	height: auto;\n}\n\n/**\n * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.\n * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome\n *    (include `-moz` to future-proof).\n */\n\ninput[type=\"search\"] {\n	-webkit-appearance: textfield; /* 1 */\n	-moz-box-sizing: content-box;\n	-webkit-box-sizing: content-box; /* 2 */\n	box-sizing: content-box;\n}\n\n/**\n * Remove inner padding and search cancel button in Safari and Chrome on OS X.\n * Safari (but not Chrome) clips the cancel button when the search input has\n * padding (and `textfield` appearance).\n */\n\ninput[type=\"search\"]::-webkit-search-cancel-button,\ninput[type=\"search\"]::-webkit-search-decoration {\n	-webkit-appearance: none;\n}\n\n/**\n * Define consistent border, margin, and padding.\n */\n\nfieldset {\n	border: 1px solid #c0c0c0;\n	margin: 0 2px;\n	padding: 0.35em 0.625em 0.75em;\n}\n\n/**\n * 1. Correct `color` not being inherited in IE 8/9.\n * 2. Remove padding so people aren't caught out if they zero out fieldsets.\n */\n\nlegend {\n	border: 0; /* 1 */\n	padding: 0; /* 2 */\n}\n\n/**\n * Remove default vertical scrollbar in IE 8/9.\n */\n\ntextarea {\n	overflow: auto;\n}\n\n/**\n * Don't inherit the `font-weight` (applied by a rule above).\n * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.\n */\n\noptgroup {\n	font-weight: bold;\n}\n\n/* Tables\n   ========================================================================== */\n\n/**\n * Remove most spacing between table cells.\n */\n\ntable {\n	border-collapse: collapse;\n	border-spacing: 0;\n}\n\ntd,\nth {\n	padding: 0;\n}\n\n/* General\n   ========================================================================== */\nhtml, body {\n    height: 100%;\n    width: 100%;\n}\nbody {\n	background: #fff;\n	font: 14px/1.55 Helvetica, sans-serif;\n	color: #393938;\n}\n.wrapper {\n    height: 100%;\n    overflow: auto;\n    width: 100%;\n}\n.wrapper.scrollbar-dynamic {\n    max-height: none;\n}\n.page-content {\n    margin: 0 auto;\n    max-width: 1600px;\n    padding: 25px;\n}\n.content .demo {\n	padding: 25px;\n}\nh1 {\n	font: bold 32px/1.2 Helvetica, sans-serif;\n	margin: 24px 0 16px;\n}\nh2 {\n	font: bold 26px/1.2 Helvetica, sans-serif;\n	margin: 24px 0 16px;\n}\nh3 {\n	font: bold 22px/1.2 Helvetica, sans-serif;\n	margin: 24px 0 16px;\n}\nh4 {\n	font: bold 18px/1.2 Helvetica, sans-serif;\n	margin: 24px 0 16px;\n}\nh5 {\n	font: bold 16px/1.2 Helvetica, sans-serif;\n	margin: 24px 0 16px;\n}\nh6 {\n	font: bold 14px/1.2 Helvetica, sans-serif;\n	margin: 24px 0 16px;\n}\n\n/** Custom page styles **/\n\n.content {\n    max-width: 1200px;\n}\n\n.content .demo {\n    border: 1px solid #CCC;\n}\n\n.content .demo .inner-content {\n    border: 1px solid #CCC;\n    max-height: 170px;\n    width: 600px;\n}\n\n.content .demo > div {\n    max-height: 250px;\n    overflow: auto;\n}\n.content .demo .permanent {\n    min-width: 800px;\n}\n.controls {\n    padding: 0 0 10px;\n}\n.controls span {\n    cursor: pointer; padding: 2px 8px;\n}\n.controls span.active {\n    background: #4698CE;\n    color: #fff;\n    cursor: default;\n}\n.prettyprint ol.linenums > li {\n    list-style-type: decimal;\n}\n#lorem-ipsum {\n    display: none;\n}",
+			"file": "/C/Users/Administrator/AppData/Local/Temp/_tc/jquery.scrollbar-gh-pages/includes/style.css",
+			"file_size": 9041,
+			"file_write_time": 130996542820000000,
+			"settings":
+			{
+				"buffer_size": 9041,
+				"line_ending": "Unix"
 			}
 		},
 		{
@@ -179,7 +273,7 @@
 			"file": "css/main.css",
 			"settings":
 			{
-				"buffer_size": 5619,
+				"buffer_size": 12144,
 				"line_ending": "Windows"
 			}
 		},
@@ -203,15 +297,15 @@
 			"file": "js/main.js",
 			"settings":
 			{
-				"buffer_size": 1775,
+				"buffer_size": 2273,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "js/CanvasThumbnail.js",
+			"file": "php/Gallery.php",
 			"settings":
 			{
-				"buffer_size": 461,
+				"buffer_size": 333,
 				"line_ending": "Windows"
 			}
 		},
@@ -219,15 +313,7 @@
 			"file": "php/SaveFlower.php",
 			"settings":
 			{
-				"buffer_size": 551,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/www/outcast/php/services/xaoc/Sync.php",
-			"settings":
-			{
-				"buffer_size": 22938,
+				"buffer_size": 840,
 				"line_ending": "Windows"
 			}
 		},
@@ -235,7 +321,7 @@
 			"file": "js/FlowerDrawer.js",
 			"settings":
 			{
-				"buffer_size": 3350,
+				"buffer_size": 3357,
 				"line_ending": "Windows"
 			}
 		},
@@ -243,24 +329,8 @@
 			"file": "js/UI.js",
 			"settings":
 			{
-				"buffer_size": 2663,
+				"buffer_size": 2758,
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/www/tiny/index.html",
-			"settings":
-			{
-				"buffer_size": 6662,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/C/www/tiny/index.js",
-			"settings":
-			{
-				"buffer_size": 20174,
-				"line_ending": "Unix"
 			}
 		}
 	],
@@ -311,11 +381,21 @@
 	[
 		"/C/www/flower",
 		"/C/www/flower/css",
+		"/C/www/flower/flowers",
+		"/C/www/flower/flowers/thumbs",
 		"/C/www/flower/js",
 		"/C/www/flower/php"
 	],
 	"file_history":
 	[
+		"/C/Users/Administrator/AppData/Local/Temp/_tc/jquery.scrollbar-gh-pages/includes/style.css",
+		"/C/Users/Administrator/AppData/Local/Temp/_tc/jquery.scrollbar-gh-pages/jquery.scrollbar.js",
+		"/C/Users/Administrator/AppData/Local/Temp/_tc/jquery.scrollbar-gh-pages/jquery.scrollbar.css",
+		"/C/Users/Administrator/AppData/Local/Temp/_tc/jquery.scrollbar-gh-pages/index.html",
+		"/C/www/outcast/php/services/xaoc/Sync.php",
+		"/C/www/flower/js/CanvasThumbnail.js",
+		"/C/www/tiny/index.js",
+		"/C/www/tiny/index.html",
 		"/D/!05_SOFTWARE/Sublime Text Build 3103 x64/Data/Packages/AutoCompleteJS/AutoCompleteJS.sublime-settings",
 		"/C/www/outcast/php/services/xaoc/XLogger.php",
 		"/C/www/dr/develop/js/Game.js",
@@ -345,7 +425,7 @@
 	],
 	"find":
 	{
-		"height": 27.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -360,6 +440,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"demo",
+			"css",
 			"    \n",
 			"_logm",
 			"elements",
@@ -393,7 +475,7 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -402,15 +484,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4029,
+						"buffer_size": 4383,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2853,
-								2853
+								3729,
+								3729
 							]
 						],
 						"settings":
@@ -420,14 +502,100 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 311.0,
+						"translation.y": 729.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
+					"file": "js/FlowerGallery.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 964,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								406,
+								406
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/C/Users/Administrator/AppData/Local/Temp/_tc/jquery.scrollbar-gh-pages/demo/basic.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 86303,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11736,
+								11736
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4503.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/C/Users/Administrator/AppData/Local/Temp/_tc/jquery.scrollbar-gh-pages/includes/style.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9041,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8544,
+								8548
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 8675.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
 					"file": "version",
 					"semi_transient": false,
 					"settings":
@@ -451,24 +619,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 5,
 					"file": "css/main.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5619,
+						"buffer_size": 12144,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								442,
-								442
+								518,
+								518
 							]
 						],
 						"settings":
@@ -478,14 +646,14 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 114.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 6,
 					"file": "js/Globals.js",
 					"semi_transient": false,
 					"settings":
@@ -509,11 +677,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 7,
 					"file": "js/Element.js",
 					"semi_transient": false,
 					"settings":
@@ -525,15 +693,15 @@
 						"selection":
 						[
 							[
-								153,
-								153
+								266,
+								266
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
-						"translation.x": 0.0,
+						"translation.x": -0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
@@ -541,20 +709,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 8,
 					"file": "js/main.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1775,
+						"buffer_size": 2273,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1545,
-								1545
+								844,
+								844
 							]
 						],
 						"settings":
@@ -562,56 +730,28 @@
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": -0.0,
-						"translation.y": 570.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "js/CanvasThumbnail.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 461,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								461,
-								461
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 342.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "php/SaveFlower.php",
+					"buffer": 9,
+					"file": "php/Gallery.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 551,
+						"buffer_size": 333,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								388,
-								388
+								149,
+								149
 							]
 						],
 						"settings":
@@ -622,54 +762,52 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "/C/www/outcast/php/services/xaoc/Sync.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 22938,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								911,
-								1255
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 209.0,
-						"zoom_level": 1.0
-					},
 					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
-					"file": "js/FlowerDrawer.js",
+					"buffer": 10,
+					"file": "php/SaveFlower.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3350,
+						"buffer_size": 840,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2189,
-								2189
+								836,
+								836
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "js/FlowerDrawer.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3357,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2193,
+								2193
 							]
 						],
 						"settings":
@@ -680,24 +818,24 @@
 						"translation.y": 1453.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 12,
 					"file": "js/UI.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2663,
+						"buffer_size": 2758,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								925,
-								925
+								67,
+								67
 							]
 						],
 						"settings":
@@ -707,67 +845,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 57.0,
+						"translation.y": 1254.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "/C/www/tiny/index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6662,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2357,
-								2363
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 456.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "/C/www/tiny/index.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 20174,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5734,
-								5734
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2671.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
+					"stack_index": 6,
 					"type": "text"
 				}
 			]
